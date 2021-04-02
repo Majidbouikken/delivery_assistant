@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/bottom_navigation_dashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/abc_vector_test"
+        app:cnb_backgroundColor="@color/purple_500"
+        />
+
+    <item
+        android:id="@+id/bottom_navigation_orders"
+        android:title="Orders"
+        android:icon="@drawable/abc_vector_test"
+        app:cnb_backgroundColor="@color/purple_500"
+        />
+
+    <item
+        android:id="@+id/bottom_navigation_map"
+        android:title="Map"
+        android:icon="@drawable/abc_vector_test"
+        app:cnb_backgroundColor="@color/purple_500"
+        />
+
+    <item
+        android:id="@+id/bottom_navigation_user"
+        android:title="User"
+        android:icon="@drawable/abc_vector_test"
+        app:cnb_backgroundColor="@color/purple_500"
+        />
+</menu>
