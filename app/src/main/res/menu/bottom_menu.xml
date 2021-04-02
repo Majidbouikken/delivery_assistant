@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/home"
-        android:icon="@drawable/abc_vector_test"
-        android:title="Home"
+        android:icon="@drawable/ic_dashboard"
+        android:title="Dashboard"
         app:cnb_iconColor="@color/purple_500"/>
     <item
         android:id="@+id/activity"
-        android:icon="@drawable/abc_vector_test"
-        android:title="Activity"
+        android:icon="@drawable/ic_orders"
+        android:title="Orders"
         app:cnb_iconColor="@color/purple_500"/>
     <item
         android:id="@+id/favorites"
-        android:icon="@drawable/abc_vector_test"
-        android:title="Favorites"
+        android:icon="@drawable/ic_map"
+        android:title="Map"
         app:cnb_iconColor="@color/purple_500" />
     <item
         android:id="@+id/settings"
-        android:icon="@drawable/abc_vector_test"
-        android:title="Settings"
+        android:icon="@drawable/ic_profile"
+        android:title="Profile"
         app:cnb_iconColor="@color/purple_500" />
 </menu>
