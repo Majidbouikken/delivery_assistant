@@ -17,16 +17,16 @@ import com.google.common.io.Resources
 import java.lang.reflect.Array.getInt
 
 class OrderAdapter(private val context: Context, var data: List<Order>) :
-    RecyclerView.Adapter<MyViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(
+    RecyclerView.Adapter<OrderViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
+        return OrderViewHolder(
             LayoutInflater.from(context).inflate(R.layout.layout_list_order, parent, false)
         )
     }
 
     override fun getItemCount() = data.size
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         holder.orderLayout.setPadding(
             when (position) {
                 0 -> context.resources.getDimensionPixelOffset(R.dimen.start_padding)
@@ -88,7 +88,7 @@ class OrderAdapter(private val context: Context, var data: List<Order>) :
     // fun separateurMillier(num: Long): String = NumberFormat.getInstance(Locale.FRANCE).format(num)
 }
 
-class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class OrderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val orderNumber = view.findViewById(R.id.order_number) as TextView
     val orderName = view.findViewById(R.id.order_name) as TextView
     val orderEmail = view.findViewById(R.id.order_email) as TextView
