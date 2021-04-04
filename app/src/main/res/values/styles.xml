@@ -32,6 +32,9 @@
     <style name="headline8" parent="headline7">
         <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
+    <style name="headline8_grey" parent="headline8">
+        <item name="android:textColor">@color/grey</item>
+    </style>
     <style name="button">
         <item name="android:fontFamily">@font/montserrat_semi_bold</item>
         <item name="android:textColor">@color/white</item>

@@ -1,6 +1,7 @@
 package com.example.deliveryassistant.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.models.Order
+import com.example.deliveryassistant.view.ProductsFragment
 import com.google.common.io.Resources
 import java.lang.reflect.Array.getInt
 
@@ -40,6 +42,13 @@ class OrderAdapter(private val context: Context, var data: List<Order>) :
         holder.orderEmail.text = data[position].email
         holder.orderPhoneNumber.text = data[position].phoneNumber
         holder.orderAddress.text = data[position].address
+
+        holder.orderProductButton.setOnClickListener {
+            val intent = Intent(context, ProductsFragment::class.java)
+            intent.putExtra("id", data[position].id)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
+        }
         // holder.textQuantite.text = holder.quantite.toString()
 
         // affichage du nom et l'image par type, smartphone ou pack
@@ -85,6 +94,6 @@ class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val orderEmail = view.findViewById(R.id.order_email) as TextView
     val orderPhoneNumber = view.findViewById(R.id.order_phone_number) as TextView
     val orderAddress = view.findViewById(R.id.order_address) as TextView
-    val orderProfilePic = view.findViewById(R.id.order_profile_pic) as ImageView
     val orderLayout = view.findViewById(R.id.order_layout) as ConstraintLayout
+    val orderProductButton = view.findViewById(R.id.order_product_button) as ImageView
 }

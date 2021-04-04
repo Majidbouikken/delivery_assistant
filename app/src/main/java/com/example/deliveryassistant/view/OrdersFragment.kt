@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -26,9 +27,18 @@ class OrdersFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_orders, container, false)
     }
 
-    @SuppressLint("WrongConstant")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        //var mOrdersLiveData : OrdersViewmodel = ViewModelProvider.of(this).get(OrdersViewmodel)
+        showProgressBar()
+
+        initRecyclerView()
+
+    }
+
+    @SuppressLint("WrongConstant")
+    private fun initRecyclerView() {
+        hideProgressBar()
 
         val orders : List<Order> = mutableListOf(
             Order(
@@ -120,7 +130,6 @@ class OrdersFragment : Fragment() {
                 )
             )
         )
-
         you_got_n_orders_left.text = "You've got "+ EnglishNumberToWords.convert(orders.size.toLong())+" orders left"
 
         // l'adaptateur et le layout manager
@@ -134,4 +143,7 @@ class OrdersFragment : Fragment() {
             recyclerView.adapter = adapter
         }
     }
+
+    private fun showProgressBar() {orders_progressBar.visibility = View.VISIBLE}
+    private fun hideProgressBar() {orders_progressBar.visibility = View.INVISIBLE}
 }

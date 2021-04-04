@@ -151,8 +151,8 @@
 
     <ImageView
         android:id="@+id/order_ic_remaining_time"
-        android:layout_width="20dp"
-        android:layout_height="0dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         app:layout_constraintBottom_toBottomOf="@+id/order_ic_remaining_time_circle"
         app:layout_constraintEnd_toEndOf="@+id/order_ic_remaining_time_circle"
         app:layout_constraintStart_toStartOf="@+id/order_ic_remaining_time_circle"
@@ -172,8 +172,8 @@
 
     <ImageView
         android:id="@+id/order_ic_address"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         app:layout_constraintBottom_toBottomOf="@+id/order_ic_address_circle"
         app:layout_constraintEnd_toEndOf="@+id/order_ic_address_circle"
         app:layout_constraintStart_toStartOf="@+id/order_ic_address_circle"
@@ -241,8 +241,8 @@
 
     <ImageView
         android:id="@+id/order_ic_phone_number"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         app:layout_constraintBottom_toBottomOf="@+id/order_ic_phone_number_circle"
         app:layout_constraintEnd_toEndOf="@+id/order_ic_phone_number_circle"
         app:layout_constraintStart_toStartOf="@+id/order_ic_phone_number_circle"
