@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200"
+    android:background="@color/white"
     tools:context=".MainActivity"
     android:id="@+id/fragment_container"
     >
@@ -13,14 +13,15 @@
         android:id="@+id/bottom_nav_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_card"
         app:cnb_menuResource="@menu/bottom_menu"
-        android:layout_alignParentBottom="true"
-        app:cnb_unselectedColor="@color/purple_200"
-        app:cnb_radius="8dp"
         app:cnb_orientationMode="horizontal"
-        android:layout_margin="20dp"
-        android:elevation="8dp"
-        />
+        app:cnb_radius="@dimen/elevation"
+        app:cnb_unselectedColor="@color/black" />
 
 </RelativeLayout>

@@ -11,6 +11,7 @@ data class Order(
     val address: String,
     val phoneNumber: String,
     val email: String,
+    val barcode: String,
     val products: List<Product>
 ) {
 }

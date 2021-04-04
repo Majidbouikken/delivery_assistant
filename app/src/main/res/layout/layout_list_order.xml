@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/order_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    app:layout_constraintGuide_percent="50">
+
+    <View
+        android:id="@+id/order_ticket"
+        android:layout_width="280dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_card"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/order_profile_pic_circle"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/order_email"
+        app:layout_constraintStart_toStartOf="@+id/order_ticket"
+        app:layout_constraintTop_toTopOf="@+id/order_name"
+        app:srcCompat="@drawable/circle"
+        android:contentDescription="TODO"
+        app:tint="@color/green_200" />
+
+    <ImageView
+        android:id="@+id/order_profile_pic"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        app:layout_constraintBottom_toBottomOf="@+id/order_profile_pic_circle"
+        app:layout_constraintEnd_toEndOf="@+id/order_profile_pic_circle"
+        app:layout_constraintStart_toStartOf="@+id/order_profile_pic_circle"
+        app:layout_constraintTop_toTopOf="@+id/order_profile_pic_circle"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_user"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/order_name"
+        style="@style/headline1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Abderrahman Errached Tlili"
+        app:layout_constraintEnd_toEndOf="@+id/order_ticket"
+        app:layout_constraintStart_toEndOf="@+id/order_profile_pic_circle"
+        app:layout_constraintTop_toTopOf="@+id/order_ticket" />
+
+    <TextView
+        android:id="@+id/order_email"
+        style="@style/headline3_grey"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="ha_tlili@esi.dz"
+        app:layout_constraintEnd_toEndOf="@+id/order_name"
+        app:layout_constraintStart_toStartOf="@+id/order_name"
+        app:layout_constraintTop_toBottomOf="@+id/order_name" />
+
+    <TextView
+        android:id="@+id/order_total"
+        style="@style/headline3_grey"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="TOTAL"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="@+id/order_ticket"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/order_id" />
+
+    <TextView
+        android:id="@+id/order_number"
+        style="@style/headline1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="RM4654153546"
+        app:layout_constraintEnd_toEndOf="@+id/order_id"
+        app:layout_constraintStart_toStartOf="@+id/order_id"
+        app:layout_constraintTop_toBottomOf="@+id/order_id" />
+
+    <TextView
+        android:id="@+id/order_address"
+        style="@style/headline1"
+        android:layout_width="0dp"
+        android:layout_height="22dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Rue st. Michelle "
+        app:layout_constraintEnd_toEndOf="@+id/order_address_title"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/order_address_title"
+        app:layout_constraintTop_toBottomOf="@+id/order_address_title" />
+
+    <TextView
+        android:id="@+id/order_id"
+        style="@style/headline3_grey"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:text="ID"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/order_ic_remaining_time_circle"
+        app:layout_constraintTop_toBottomOf="@+id/order_remainging_time" />
+
+    <TextView
+        android:id="@+id/order_phone_number_title"
+        style="@style/headline3_grey"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Phone number"
+        app:layout_constraintEnd_toEndOf="@+id/order_email"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/order_ic_phone_number_circle"
+        app:layout_constraintTop_toBottomOf="@+id/order_email" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/order_ic_remaining_time_circle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/order_remainging_time"
+        app:layout_constraintStart_toStartOf="@+id/order_ic_address_circle"
+        app:layout_constraintTop_toTopOf="@+id/order_remaining_time"
+        app:srcCompat="@drawable/circle"
+        app:tint="@color/green_200" />
+
+    <ImageView
+        android:id="@+id/order_ic_remaining_time"
+        android:layout_width="20dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/order_ic_remaining_time_circle"
+        app:layout_constraintEnd_toEndOf="@+id/order_ic_remaining_time_circle"
+        app:layout_constraintStart_toStartOf="@+id/order_ic_remaining_time_circle"
+        app:layout_constraintTop_toTopOf="@+id/order_ic_remaining_time_circle"
+        app:srcCompat="@drawable/ic_clock"
+        app:tint="@color/green_600" />
+
+    <ImageView
+        android:id="@+id/order_ic_address_circle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/order_address"
+        app:layout_constraintStart_toStartOf="@+id/order_ic_phone_number_circle"
+        app:layout_constraintTop_toTopOf="@+id/order_address_title"
+        app:srcCompat="@drawable/circle"
+        app:tint="@color/green_200" />
+
+    <ImageView
+        android:id="@+id/order_ic_address"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/order_ic_address_circle"
+        app:layout_constraintEnd_toEndOf="@+id/order_ic_address_circle"
+        app:layout_constraintStart_toStartOf="@+id/order_ic_address_circle"
+        app:layout_constraintTop_toTopOf="@+id/order_ic_address_circle"
+        app:srcCompat="@drawable/ic_pin"
+        app:tint="@color/green_600" />
+
+    <TextView
+        android:id="@+id/order_price"
+        style="@style/headline1_bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="2 400 DZD"
+        android:textAlignment="textStart"
+        android:textColor="@color/green_600"
+        app:layout_constraintEnd_toEndOf="@+id/order_total"
+        app:layout_constraintStart_toStartOf="@+id/order_total"
+        app:layout_constraintTop_toBottomOf="@+id/order_total" />
+
+    <TextView
+        android:id="@+id/order_phone_number"
+        style="@style/headline1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="+33 560 83 43 26"
+        app:layout_constraintEnd_toEndOf="@+id/order_phone_number_title"
+        app:layout_constraintStart_toStartOf="@+id/order_phone_number_title"
+        app:layout_constraintTop_toBottomOf="@+id/order_phone_number_title" />
+
+    <TextView
+        android:id="@+id/order_address_title"
+        style="@style/headline3_grey"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Address"
+        app:layout_constraintEnd_toEndOf="@+id/order_phone_number_title"
+        app:layout_constraintStart_toEndOf="@+id/order_ic_address_circle"
+        app:layout_constraintTop_toBottomOf="@+id/order_phone_number" />
+
+    <TextView
+        android:id="@+id/order_remaining_time"
+        style="@style/headline3_grey"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Remaining time"
+        app:layout_constraintEnd_toEndOf="@+id/order_address_title"
+        app:layout_constraintStart_toEndOf="@+id/order_ic_remaining_time_circle"
+        app:layout_constraintTop_toBottomOf="@+id/order_address" />
+
+    <ImageView
+        android:id="@+id/order_ic_phone_number_circle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/order_phone_number"
+        app:layout_constraintStart_toStartOf="@+id/order_profile_pic_circle"
+        app:layout_constraintTop_toTopOf="@+id/order_phone_number_title"
+        app:srcCompat="@drawable/circle"
+        app:tint="@color/green_200" />
+
+    <ImageView
+        android:id="@+id/order_ic_phone_number"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/order_ic_phone_number_circle"
+        app:layout_constraintEnd_toEndOf="@+id/order_ic_phone_number_circle"
+        app:layout_constraintStart_toStartOf="@+id/order_ic_phone_number_circle"
+        app:layout_constraintTop_toTopOf="@+id/order_ic_phone_number_circle"
+        app:srcCompat="@drawable/ic_phone"
+        app:tint="@color/green_600" />
+
+    <TextView
+        android:id="@+id/order_remainging_time"
+        style="@style/headline1"
+        android:layout_width="0dp"
+        android:layout_height="22dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="30 mins for delivery"
+        app:layout_constraintEnd_toEndOf="@+id/order_remaining_time"
+        app:layout_constraintStart_toStartOf="@+id/order_remaining_time"
+        app:layout_constraintTop_toBottomOf="@+id/order_remaining_time" />
+
+
+    <ImageView
+        android:id="@+id/order_map_button"
+        android:layout_width="56dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/order_ticket"
+        app:layout_constraintTop_toBottomOf="@+id/order_ticket"
+        app:srcCompat="@drawable/rounded_card"
+        app:tint="@color/green_600" />
+
+    <ImageView
+        android:id="@+id/order_ic_map_pin"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="@+id/order_map_button"
+        app:layout_constraintEnd_toEndOf="@+id/order_map_button"
+        app:layout_constraintStart_toStartOf="@+id/order_map_button"
+        app:layout_constraintTop_toTopOf="@+id/order_map_button"
+        app:srcCompat="@drawable/ic_pin"
+        app:tint="@color/green_200" />
+
+    <ImageView
+        android:id="@+id/order_product_button"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/order_map_button"
+        app:layout_constraintStart_toStartOf="@+id/order_ticket"
+        app:layout_constraintTop_toBottomOf="@+id/order_ticket"
+        app:srcCompat="@drawable/rounded_card"
+        app:tint="@color/green_200" />
+
+    <TextView
+        android:id="@+id/textView5"
+        style="@style/headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Products"
+        android:textColor="@color/green_600"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/order_product_button"
+        app:layout_constraintStart_toStartOf="@+id/order_product_button"
+        app:layout_constraintTop_toTopOf="@+id/order_product_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
