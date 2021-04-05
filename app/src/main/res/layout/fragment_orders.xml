@@ -11,25 +11,41 @@
         android:id="@+id/title_orders"
         style="@style/headline7"
         android:layout_width="0dp"
-        android:layout_height="33dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
-        android:text="Orders"
+        android:text="@string/orders"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/you_got_n_orders_left"
+        android:id="@+id/you_got"
         style="@style/headline6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="You've got 2 orders left"
-        app:layout_constraintEnd_toEndOf="@+id/title_orders"
         app:layout_constraintStart_toStartOf="@+id/title_orders"
         app:layout_constraintTop_toBottomOf="@+id/title_orders" />
+
+    <TextView
+        android:id="@+id/orders_left"
+        style="@style/headline6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/orders_count_text"
+        app:layout_constraintStart_toEndOf="@+id/orders_count_text"
+        app:layout_constraintTop_toTopOf="@+id/orders_count_text" />
+
+    <TextView
+        android:id="@+id/orders_count_text"
+        style="@style/headline6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green_600"
+        app:layout_constraintBottom_toBottomOf="@+id/you_got"
+        app:layout_constraintStart_toEndOf="@+id/you_got"
+        app:layout_constraintTop_toTopOf="@+id/you_got" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ordersRecyclerView"
@@ -38,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/you_got_n_orders_left" />
+        app:layout_constraintTop_toBottomOf="@+id/you_got" />
 
     <ProgressBar
         android:id="@+id/orders_progressBar"
@@ -46,8 +62,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/ordersRecyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ordersRecyclerView"
         app:layout_constraintStart_toStartOf="@+id/ordersRecyclerView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/no_orders_frame"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:src="@drawable/rounded_card"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/title_orders"
+        app:layout_constraintStart_toStartOf="@+id/title_orders"
+        app:layout_constraintTop_toBottomOf="@+id/you_got"
+        app:tint="@color/green_200" />
+
+    <ImageView
+        android:id="@+id/no_orders_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_checkmark"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/no_orders_frame"
+        app:layout_constraintStart_toStartOf="@+id/no_orders_frame"
+        app:layout_constraintTop_toTopOf="@+id/ordersRecyclerView"
+        app:tint="@color/green_600" />
+
+    <TextView
+        android:id="@+id/no_orders_text"
+        style="@style/headline3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="There are no orders left for you to deliver!"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/no_orders_frame"
+        app:layout_constraintEnd_toEndOf="@+id/no_orders_frame"
+        app:layout_constraintStart_toEndOf="@+id/no_orders_icon"
         app:layout_constraintTop_toTopOf="@+id/ordersRecyclerView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

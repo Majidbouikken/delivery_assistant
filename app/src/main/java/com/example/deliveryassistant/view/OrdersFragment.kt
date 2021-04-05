@@ -9,18 +9,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.example.deliveryassistant.R
-import com.example.deliveryassistant.RetrofitService
 import com.example.deliveryassistant.adapters.OrderAdapter
 import com.example.deliveryassistant.models.Order
+import com.example.deliveryassistant.utils.EnglishNumberToWords
 import com.example.deliveryassistant.viewModels.OrdersViewModel
 import kotlinx.android.synthetic.main.fragment_orders.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class OrdersFragment : Fragment() {
     lateinit var orderAdapter: OrderAdapter
@@ -44,70 +40,6 @@ class OrdersFragment : Fragment() {
             LinearLayoutManager(requireActivity(), OrientationHelper.HORIZONTAL, false)
         orderAdapter = OrderAdapter(requireActivity())
         ordersRecyclerView.adapter = orderAdapter
-        /*val orders : List<Order> = mutableListOf(
-            Order(
-                1234563415,
-                "Abderrahman Errached Tlili",
-                "Rue st. michelle, Errahmani, Alger",
-                "+213 560 83 43 26",
-                "ha_tlili@esi.dz",
-                "021651234528"
-            ),
-            Order(
-                1234563415,
-                "Abderrahman Errached Tlili",
-                "Rue st. michelle, Errahmani, Alger",
-                "+213 560 83 43 26",
-                "ha_tlili@esi.dz",
-                "021651234528"
-
-            ),
-            Order(
-                1234563415,
-                "Abderrahman Errached Tlili",
-                "Rue st. michelle, Errahmani, Alger",
-                "+213 560 83 43 26",
-                "ha_tlili@esi.dz",
-                "021651234528",
-                mutableListOf(
-                    Product(
-                        1,
-                        "iPhone 11 pro",
-                        2,
-                        225000
-                    ),
-                    Product(
-                        1,
-                        "Apple Airpod pro",
-                        2,
-                        75000
-                    )
-                )
-            ),
-            Order(
-                1234563415,
-                "Abderrahman Errached Tlili",
-                "Rue st. michelle, Errahmani, Alger",
-                "+213 560 83 43 26",
-                "ha_tlili@esi.dz",
-                "021651234528",
-                mutableListOf(
-                    Product(
-                        1,
-                        "iPhone 11 pro",
-                        2,
-                        225000
-                    ),
-                    Product(
-                        1,
-                        "Apple Airpod pro",
-                        2,
-                        75000
-                    )
-                )
-            )
-        )*/
-        //you_got_n_orders_left.text = "You've got "+ EnglishNumberToWords.convert(orders.size.toLong())+" orders left"
     }
 
     private fun getOrdersData() {
@@ -118,52 +50,25 @@ class OrdersFragment : Fragment() {
         viewModel.getOrderListDataObserver().observe(viewLifecycleOwner, Observer<List<Order>> {
             if (it.isNotEmpty()) {
                 hideProgressBar()
+                hideNoOrdersMessage()
+                // update fragment subtitle
+                you_got.text = getString(R.string.you_ve)
+                orders_count_text.text = EnglishNumberToWords.convert(it.size.toLong())
+                orders_left.text = when (it.size) {
+                    1 -> getString(R.string.order_left)
+                    else -> getString(R.string.orders_left)
+                }
                 orderAdapter.setListData(it as ArrayList<Order>)
                 orderAdapter.notifyDataSetChanged()
 
             } else {
-                Toast.makeText(context, "Error in getting data from api.", Toast.LENGTH_LONG).show()
+                hideProgressBar()
+                showNoOrdersMessage()
             }
 
         })
         viewModel.getOrders(1)
     }
-    /*private fun getOrdersData(user_id: Int) {
-        val call = RetrofitService.endpoint.getOrders(user_id)
-        showProgressBar()
-        call.enqueue(object : Callback<List<Order>> {
-            @SuppressLint("WrongConstant")
-            override fun onResponse(
-                call: Call<List<Order>>?, response:
-                Response<List<Order>>?
-            ) {
-                showProgressBar()
-                val list = response?.body()!!
-                if (list.isNotEmpty()) {
-                    orderAdapter.setListData(list as ArrayList<Order>)
-                    orderAdapter.notifyDataSetChanged()
-                    /*val adapter = OrderAdapter(requireActivity(), list)
-                    val layoutManager = LinearLayoutManager(requireActivity(), OrientationHelper.HORIZONTAL, false)
-                    val ordersRecyclerView = activity?.findViewById<RecyclerView>(R.id.ordersRecyclerView)
-                    if (ordersRecyclerView != null) {
-                        ordersRecyclerView.layoutManager = layoutManager
-                        ordersRecyclerView.adapter = adapter
-                    }*/
-                }
-            }
-
-            override fun onFailure(call: Call<List<Order>>?, t: Throwable?) {
-                hideProgressBar()
-                //Snackbar.make(application, "Replace with your own action", Snackbar.LENGTH_LONG)
-                Toast.makeText(
-                    context,
-                    t.toString(),
-                    Toast.LENGTH_SHORT
-                )
-
-            }
-        })
-    }*/
 
     private fun showProgressBar() {
         orders_progressBar.visibility = View.VISIBLE
@@ -171,6 +76,19 @@ class OrdersFragment : Fragment() {
 
     private fun hideProgressBar() {
         orders_progressBar.visibility = View.INVISIBLE
+    }
+
+    // No orders message is a message to show up when there are no deliveries today
+    private fun showNoOrdersMessage() {
+        no_orders_frame.visibility = View.VISIBLE
+        no_orders_icon.visibility = View.VISIBLE
+        no_orders_text.visibility = View.VISIBLE
+    }
+
+    private fun hideNoOrdersMessage() {
+        no_orders_frame.visibility = View.INVISIBLE
+        no_orders_icon.visibility = View.INVISIBLE
+        no_orders_text.visibility = View.INVISIBLE
     }
 
 }

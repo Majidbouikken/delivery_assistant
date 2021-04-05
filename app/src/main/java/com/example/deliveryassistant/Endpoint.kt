@@ -5,12 +5,11 @@ import com.example.deliveryassistant.models.Product
 import com.example.deliveryassistant.models.User
 import retrofit2.Call
 import retrofit2.http.*
-import java.nio.file.attribute.UserPrincipalLookupService
 
 interface Endpoint {
     // 1 Authentication endpoint
     @GET("login/{email}/{password}")
-    fun login(@Path("email") name: String, @Path("password") pass: String): Call<User>
+    fun login(@Path("email") email: String, @Path("password") password: String): Call<User>
 
     // 2 Endpoints to display orders and products
     @GET("getOrders/{user_id}")
@@ -22,7 +21,7 @@ interface Endpoint {
     // 3 Endpoints to validate a delivery
     @POST("order/update/{order_id}/{barcode}")
     fun updateOrder(
-        @Path("order_id") order_id: String,
+        @Path("order_id") order_id: Int,
         @Path("barcode") barcode: String
     ): Call<String>
 

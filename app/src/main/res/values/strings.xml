@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Delivery Assistant</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="orders">Orders</string>
+    <string name="you_ve">You\'ve got&#160;</string>
+    <string name="order_left">&#160;order left.</string>
+    <string name="orders_left">&#160;orders left.</string>
 </resources>
