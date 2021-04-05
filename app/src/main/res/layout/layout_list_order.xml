@@ -29,13 +29,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/order_email"
         app:layout_constraintStart_toStartOf="@+id/order_ticket"
         app:layout_constraintTop_toTopOf="@+id/order_name"
-        app:srcCompat="@drawable/circle"
-        app:tint="@color/green_200" />
+        app:srcCompat="@drawable/circle" />
 
     <ImageView
         android:id="@+id/order_avatar_icon"
         android:layout_width="52dp"
         android:layout_height="52dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/order_avatar"
         app:layout_constraintEnd_toEndOf="@+id/order_avatar"
         app:layout_constraintStart_toStartOf="@+id/order_avatar"
@@ -186,12 +186,24 @@
         style="@style/headline1_bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="2 400 DZD"
+        android:text="2 400"
         android:textAlignment="textStart"
         android:textColor="@color/green_600"
-        app:layout_constraintEnd_toEndOf="@+id/order_total"
         app:layout_constraintStart_toStartOf="@+id/order_total"
         app:layout_constraintTop_toBottomOf="@+id/order_total" />
+
+    <TextView
+        android:id="@+id/order_price2"
+        style="@style/headline1_DZD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="2dp"
+        android:text="DZD"
+        android:textAlignment="textStart"
+        android:textColor="@color/green_600"
+        app:layout_constraintBottom_toBottomOf="@+id/order_price"
+        app:layout_constraintStart_toEndOf="@+id/order_price" />
 
     <TextView
         android:id="@+id/order_phone_number"

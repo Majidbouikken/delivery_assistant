@@ -3,15 +3,18 @@
     <style name="headline1">
         <item name="android:fontFamily">@font/montserrat_medium</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
     <style name="headline1_bold" parent="headline1">
         <item name="android:fontFamily">@font/montserrat_semi_bold</item>
     </style>
+    <style name="headline1_DZD" parent="headline1_bold">
+        <item name="android:textSize">8sp</item>
+    </style>
     <style name="headline3">
         <item name="android:fontFamily">@font/montserrat_medium</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">10sp</item>
     </style>
     <style name="headline3_grey" parent="headline3">
         <item name="android:textColor">#FF808080</item>
@@ -19,7 +22,7 @@
     <style name="headline5">
         <item name="android:fontFamily">@font/montserrat_semi_bold</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
     <style name="headline6" parent="headline5">
         <item name="android:fontFamily">@font/montserrat_medium</item>

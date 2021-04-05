@@ -11,11 +11,13 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.models.Order
-import com.example.deliveryassistant.utils.NumberFormat
+import com.example.deliveryassistant.utils.MyNumberFormat
 import com.example.deliveryassistant.view.ProductsFragment
 import com.google.common.io.Resources
+import kotlinx.android.synthetic.main.fragment_dashboard.view.*
 import java.lang.reflect.Array.getInt
 
 class OrderAdapter(private val context: Context) :
@@ -41,7 +43,7 @@ class OrderAdapter(private val context: Context) :
                 0 -> context.resources.getDimensionPixelOffset(R.dimen.start_padding)
                 else -> context.resources.getDimensionPixelOffset(R.dimen.padding)
             }, context.resources.getDimensionPixelOffset(R.dimen.padding), when (position) {
-                data.size -> context.resources.getDimensionPixelOffset(R.dimen.padding)
+                (data.size-1) -> context.resources.getDimensionPixelOffset(R.dimen.padding)
                 else -> 0
             }, context.resources.getDimensionPixelOffset(R.dimen.padding)
         )
@@ -49,16 +51,16 @@ class OrderAdapter(private val context: Context) :
         holder.orderNumber.text = data[position].id.toString()
         holder.orderName.text = (data[position].first_name+" "+data[position].last_name)
         holder.orderEmail.text = data[position].email
-        holder.orderPhoneNumber.text = NumberFormat.phoneNumberFormat(data[position].phone_number)
+        holder.orderPhoneNumber.text = MyNumberFormat.phoneNumberFormat(data[position].phone_number)
         holder.orderAddress.text = data[position].address
-        //holder.orderAvatar = data[position].avatar_url
-        Glide.with(imageThumb)
-            .load(url)
+        holder.orderPrice.text = MyNumberFormat.thousandSeparator(data[position].total_price.toLong())
+
+        // holder
+        Glide.with(context)
+            .load(data[position].avatar_url)
             .circleCrop()
-            .placeholder(R.drawable.default_thumb)
-            .error(R.drawable.default_thumb)
-            .fallback(R.drawable.default_thumb)
-            .into(imageThumb)
+            .placeholder(R.drawable.circle)
+            .into(holder.orderAvatar)
 
         holder.orderProductButton.setOnClickListener {
             val intent = Intent(context, ProductsFragment::class.java)
@@ -102,7 +104,7 @@ class OrderAdapter(private val context: Context) :
     }
 
     // separateur de millier
-    // fun separateurMillier(num: Long): String = NumberFormat.getInstance(Locale.FRANCE).format(num)
+    //
 }
 
 class OrderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -111,6 +113,7 @@ class OrderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val orderEmail = view.findViewById(R.id.order_email) as TextView
     val orderPhoneNumber = view.findViewById(R.id.order_phone_number) as TextView
     val orderAddress = view.findViewById(R.id.order_address) as TextView
+    val orderPrice = view.findViewById(R.id.order_price) as TextView
     val orderLayout = view.findViewById(R.id.order_layout) as ConstraintLayout
     val orderProductButton = view.findViewById(R.id.order_product_button) as ImageView
     val orderAvatar = view.findViewById(R.id.order_avatar) as ImageView
