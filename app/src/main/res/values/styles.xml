@@ -11,6 +11,9 @@
     <style name="headline1_DZD" parent="headline1_bold">
         <item name="android:textSize">8sp</item>
     </style>
+    <style name="headline1_quantity" parent="headline1">
+        <item name="android:textSize">8sp</item>
+    </style>
     <style name="headline3">
         <item name="android:fontFamily">@font/montserrat_medium</item>
         <item name="android:textColor">@color/black</item>

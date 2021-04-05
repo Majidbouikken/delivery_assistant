@@ -55,7 +55,6 @@ class OrderAdapter(private val context: Context) :
         holder.orderAddress.text = data[position].address
         holder.orderPrice.text = MyNumberFormat.thousandSeparator(data[position].total_price.toLong())
 
-        // holder
         Glide.with(context)
             .load(data[position].avatar_url)
             .circleCrop()
@@ -68,43 +67,7 @@ class OrderAdapter(private val context: Context) :
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(intent)
         }
-        // holder.textQuantite.text = holder.quantite.toString()
-
-        // affichage du nom et l'image par type, smartphone ou pack
-        /*if (data[position].getType() == "SmartPhone") {
-            holder.icProduit.setImageResource(R.drawable.ic_phone)
-            holder.textProduit.text =
-                (data[position] as SmartPhone).brand + " " + (data[position] as SmartPhone).model + " - " + (data[position] as SmartPhone).color
-        } else {
-            holder.icProduit.setImageResource(R.drawable.ic_pack)
-            holder.textProduit.text = data[position].name
-        }
-
-        // les evenements add et min
-        holder.icAdd.setOnClickListener {
-            if (holder.quantite != data[position].qte) {
-                holder.quantite++
-                holder.textQuantite.text = holder.quantite.toString()
-            }
-        }
-        holder.icMin.setOnClickListener {
-            if (holder.quantite != 0) {
-                holder.quantite--
-                holder.textQuantite.text = holder.quantite.toString()
-            }
-        }
-
-        holder.itemView.setOnClickListener {
-            if (data[position].getType() == "SmartPhone") {
-                val bundle = bundleOf("smartPhone" to (data[position] as SmartPhone))
-                (context as Activity)!!.findNavController(R.id.navFragment)
-                    .navigate(R.id.action_productListFragment_to_ProductDetailFragment, bundle)
-            }
-        }*/
     }
-
-    // separateur de millier
-    //
 }
 
 class OrderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -117,5 +80,4 @@ class OrderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val orderLayout = view.findViewById(R.id.order_layout) as ConstraintLayout
     val orderProductButton = view.findViewById(R.id.order_product_button) as ImageView
     val orderAvatar = view.findViewById(R.id.order_avatar) as ImageView
-
 }

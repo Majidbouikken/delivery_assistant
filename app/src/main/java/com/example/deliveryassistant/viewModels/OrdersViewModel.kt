@@ -1,5 +1,6 @@
 package com.example.deliveryassistant.viewModels
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.deliveryassistant.RetrofitService
@@ -13,7 +14,7 @@ class OrdersViewModel : ViewModel() {
     var orderListData: MutableLiveData<List<Order>> = MutableLiveData()
 
 
-    fun getOrderListDataObserver(): MutableLiveData<List<Order>> {
+    fun getOrderListDataObserver(): LiveData<List<Order>> {
         return orderListData
     }
 

@@ -26,16 +26,15 @@
         android:id="@+id/product_name"
         style="@style/headline1"
         android:layout_width="0dp"
-        android:layout_height="22dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginBottom="5dp"
         android:ellipsize="end"
-        android:maxLines="1"
+        android:maxLines="2"
         android:text="Shampoing l'Oreal cheveaux gras"
+        android:textAlignment="gravity"
         app:layout_constraintBottom_toTopOf="@+id/product_horizontal_guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/product_vertical_guideline2"
         app:layout_constraintStart_toStartOf="@+id/product_vertical_guideline" />
 
     <TextView
@@ -43,11 +42,61 @@
         style="@style/headline1_bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="2 700 DZD"
-        app:layout_constraintEnd_toEndOf="@+id/product_name"
-        app:layout_constraintStart_toStartOf="@+id/product_name"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:text="2 700"
+        android:textColor="@color/green_600"
+        app:layout_constraintEnd_toStartOf="@+id/product_DZD"
         app:layout_constraintTop_toTopOf="@+id/product_horizontal_guideline" />
+
+    <ImageView
+        android:id="@+id/product_quantity_circle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="4dp"
+        android:tint="@color/green_200"
+        app:layout_constraintBottom_toTopOf="@+id/product_quantity_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/circle" />
+
+    <TextView
+        android:id="@+id/product_quantity"
+        style="@style/headline1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="52"
+        android:textAlignment="center"
+        android:textColor="@color/green_600"
+        app:layout_constraintBottom_toBottomOf="@+id/product_quantity_circle"
+        app:layout_constraintEnd_toEndOf="@+id/product_quantity_circle"
+        app:layout_constraintStart_toStartOf="@+id/product_quantity_circle"
+        app:layout_constraintTop_toTopOf="@+id/product_quantity_circle" />
+
+    <TextView
+        android:id="@+id/product_DZD"
+        style="@style/headline1_DZD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="DZD"
+        android:textColor="@color/green_600"
+        app:layout_constraintBottom_toBottomOf="@+id/product_price"
+        app:layout_constraintEnd_toEndOf="@+id/product_name" />
+
+    <TextView
+        android:id="@+id/product_quantity_title"
+        style="@style/headline1_quantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Quantity"
+        android:textAlignment="center"
+        android:textColor="@color/grey"
+        app:layout_constraintBottom_toBottomOf="@+id/product_DZD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/product_vertical_guideline2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/product_vertical_guideline"
@@ -57,9 +106,17 @@
         app:layout_constraintGuide_begin="100dp" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/product_vertical_guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="64dp" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/product_horizontal_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.6" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
