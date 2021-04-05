@@ -16,8 +16,15 @@ import com.example.deliveryassistant.view.ProductsFragment
 import com.google.common.io.Resources
 import java.lang.reflect.Array.getInt
 
-class OrderAdapter(private val context: Context, var data: List<Order>) :
+class OrderAdapter(private val context: Context) :
     RecyclerView.Adapter<OrderViewHolder>() {
+
+    var data = ArrayList<Order>()
+
+    fun setListData(data: ArrayList<Order>) {
+        this.data = data
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
         return OrderViewHolder(
             LayoutInflater.from(context).inflate(R.layout.layout_list_order, parent, false)
@@ -38,9 +45,9 @@ class OrderAdapter(private val context: Context, var data: List<Order>) :
         )
 
         holder.orderNumber.text = data[position].id.toString()
-        holder.orderName.text = data[position].name
+        holder.orderName.text = (data[position].first_name+" "+data[position].last_name)
         holder.orderEmail.text = data[position].email
-        holder.orderPhoneNumber.text = data[position].phoneNumber
+        holder.orderPhoneNumber.text = data[position].phone_number
         holder.orderAddress.text = data[position].address
 
         holder.orderProductButton.setOnClickListener {

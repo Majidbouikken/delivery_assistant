@@ -2,13 +2,11 @@ package com.example.deliveryassistant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Switch
 import androidx.fragment.app.Fragment
 import com.example.deliveryassistant.view.DashboardFragment
 import com.example.deliveryassistant.view.OrdersFragment
 import com.example.deliveryassistant.view.MapFragment
 import com.example.deliveryassistant.view.ProfileFragment
-import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -33,4 +31,5 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
         }
     }
+
 }
