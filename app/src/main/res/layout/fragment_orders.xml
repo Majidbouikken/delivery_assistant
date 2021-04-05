@@ -54,7 +54,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/you_got" />
+        app:layout_constraintTop_toBottomOf="@+id/you_got"
+        tools:listitem="@layout/layout_list_order"/>
 
     <ProgressBar
         android:id="@+id/orders_progressBar"

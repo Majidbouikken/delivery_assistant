@@ -4,9 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 // classe Commande
-//@Entity(tableName = "order")
+@Entity(tableName = "orders")
 data class Order(
-    //@PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = false)
     val id: Int,
     val first_name: String,
     val last_name: String,
