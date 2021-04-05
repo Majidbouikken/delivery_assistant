@@ -21,25 +21,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/order_profile_pic_circle"
+        android:id="@+id/order_avatar"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginStart="20dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="@+id/order_email"
         app:layout_constraintStart_toStartOf="@+id/order_ticket"
         app:layout_constraintTop_toTopOf="@+id/order_name"
         app:srcCompat="@drawable/circle"
-        android:contentDescription="TODO"
         app:tint="@color/green_200" />
 
     <ImageView
-        android:id="@+id/order_profile_pic"
+        android:id="@+id/order_avatar_icon"
         android:layout_width="52dp"
         android:layout_height="52dp"
-        app:layout_constraintBottom_toBottomOf="@+id/order_profile_pic_circle"
-        app:layout_constraintEnd_toEndOf="@+id/order_profile_pic_circle"
-        app:layout_constraintStart_toStartOf="@+id/order_profile_pic_circle"
-        app:layout_constraintTop_toTopOf="@+id/order_profile_pic_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/order_avatar"
+        app:layout_constraintEnd_toEndOf="@+id/order_avatar"
+        app:layout_constraintStart_toStartOf="@+id/order_avatar"
+        app:layout_constraintTop_toTopOf="@+id/order_avatar"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_user"
         app:tint="@color/black" />
@@ -54,7 +54,7 @@
         android:layout_marginEnd="20dp"
         android:text="Abderrahman Errached Tlili"
         app:layout_constraintEnd_toEndOf="@+id/order_ticket"
-        app:layout_constraintStart_toEndOf="@+id/order_profile_pic_circle"
+        app:layout_constraintStart_toEndOf="@+id/order_avatar"
         app:layout_constraintTop_toTopOf="@+id/order_ticket" />
 
     <TextView
@@ -234,7 +234,7 @@
         android:layout_width="28dp"
         android:layout_height="28dp"
         app:layout_constraintBottom_toBottomOf="@+id/order_phone_number"
-        app:layout_constraintStart_toStartOf="@+id/order_profile_pic_circle"
+        app:layout_constraintStart_toStartOf="@+id/order_avatar"
         app:layout_constraintTop_toTopOf="@+id/order_phone_number_title"
         app:srcCompat="@drawable/circle"
         app:tint="@color/green_200" />

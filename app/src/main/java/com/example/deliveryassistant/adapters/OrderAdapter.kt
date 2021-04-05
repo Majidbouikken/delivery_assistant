@@ -2,6 +2,7 @@ package com.example.deliveryassistant.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.models.Order
+import com.example.deliveryassistant.utils.NumberFormat
 import com.example.deliveryassistant.view.ProductsFragment
 import com.google.common.io.Resources
 import java.lang.reflect.Array.getInt
@@ -47,8 +49,16 @@ class OrderAdapter(private val context: Context) :
         holder.orderNumber.text = data[position].id.toString()
         holder.orderName.text = (data[position].first_name+" "+data[position].last_name)
         holder.orderEmail.text = data[position].email
-        holder.orderPhoneNumber.text = data[position].phone_number
+        holder.orderPhoneNumber.text = NumberFormat.phoneNumberFormat(data[position].phone_number)
         holder.orderAddress.text = data[position].address
+        //holder.orderAvatar = data[position].avatar_url
+        Glide.with(imageThumb)
+            .load(url)
+            .circleCrop()
+            .placeholder(R.drawable.default_thumb)
+            .error(R.drawable.default_thumb)
+            .fallback(R.drawable.default_thumb)
+            .into(imageThumb)
 
         holder.orderProductButton.setOnClickListener {
             val intent = Intent(context, ProductsFragment::class.java)
@@ -103,4 +113,6 @@ class OrderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val orderAddress = view.findViewById(R.id.order_address) as TextView
     val orderLayout = view.findViewById(R.id.order_layout) as ConstraintLayout
     val orderProductButton = view.findViewById(R.id.order_product_button) as ImageView
+    val orderAvatar = view.findViewById(R.id.order_avatar) as ImageView
+
 }
