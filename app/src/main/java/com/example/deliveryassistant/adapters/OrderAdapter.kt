@@ -2,23 +2,18 @@ package com.example.deliveryassistant.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.deliveryassistant.view.ProductActivity
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.utils.MyNumberFormat
-import com.example.deliveryassistant.view.ProductsFragment
-import com.google.common.io.Resources
-import kotlinx.android.synthetic.main.fragment_dashboard.view.*
-import java.lang.reflect.Array.getInt
 
 class OrderAdapter(private val context: Context) :
     RecyclerView.Adapter<OrderViewHolder>() {
@@ -38,6 +33,8 @@ class OrderAdapter(private val context: Context) :
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
+
+        // to get the right padding
         holder.orderLayout.setPadding(
             when (position) {
                 0 -> context.resources.getDimensionPixelOffset(R.dimen.start_padding)
@@ -48,6 +45,7 @@ class OrderAdapter(private val context: Context) :
             }, context.resources.getDimensionPixelOffset(R.dimen.padding)
         )
 
+        // setting up data
         holder.orderNumber.text = data[position].id.toString()
         holder.orderName.text = (data[position].first_name+" "+data[position].last_name)
         holder.orderEmail.text = data[position].email
@@ -55,15 +53,17 @@ class OrderAdapter(private val context: Context) :
         holder.orderAddress.text = data[position].address
         holder.orderPrice.text = MyNumberFormat.thousandSeparator(data[position].total_price.toLong())
 
+        // the image
         Glide.with(context)
             .load(data[position].avatar_url)
             .circleCrop()
             .placeholder(R.drawable.circle)
             .into(holder.orderAvatar)
 
+        // the on click listener
         holder.orderProductButton.setOnClickListener {
-            val intent = Intent(context, ProductsFragment::class.java)
-            intent.putExtra("id", data[position].id)
+            val intent = Intent(context, ProductActivity::class.java)
+            intent.putExtra("order_id", data[position].id.toString())
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(intent)
         }

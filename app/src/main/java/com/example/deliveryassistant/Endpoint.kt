@@ -3,13 +3,14 @@ package com.example.deliveryassistant
 import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.models.Product
 import com.example.deliveryassistant.models.User
+import com.example.deliveryassistant.models.UserDashboard
 import retrofit2.Call
 import retrofit2.http.*
 
 interface Endpoint {
     // 1 Authentication endpoint
     @GET("login/{email}/{password}")
-    fun login(@Path("email") email: String, @Path("password") password: String): Call<User>
+    fun login(@Path("email") email: String, @Path("password") password: String): Call<List<User>>
 
     // 2 Endpoints to display orders and products
     @GET("getOrders/{user_id}")
@@ -26,12 +27,6 @@ interface Endpoint {
     ): Call<String>
 
     // 4 Enpoints of the Dashboard
-    @GET("getTodayOrdersCount/{user_id}")
-    fun getTodayOrdersCount(@Path("user_id") user_id: Int): Call<Int>
-
-    @GET("getTodaysDeliveriesCount/{user_id}")
-    fun getTodaysDeliveriesCount(@Path("user_id") user_id: Int): Call<Int>
-
-    @GET("getDelayedOrdersCount/{user_id}")
-    fun getDelayedOrdersCount(@Path("user_id") user_id: Int): Call<Int>
+    @GET("getDashboardData/{user_id}")
+    fun getDashboardData(@Path("user_id") user_id: Int): Call<List<UserDashboard>>
 }

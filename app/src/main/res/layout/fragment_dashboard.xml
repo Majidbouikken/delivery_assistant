@@ -107,7 +107,7 @@
         app:layout_constraintTop_toTopOf="@+id/no_internet_frame" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/dashboard_delayedCount"
         style="@style/headline3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -127,10 +127,10 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:text=" deliveries are delayed by 48 hours!"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintBottom_toBottomOf="@+id/dashboard_delayedCount"
         app:layout_constraintEnd_toEndOf="@+id/delayed_frame"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintStart_toEndOf="@+id/dashboard_delayedCount"
+        app:layout_constraintTop_toTopOf="@+id/dashboard_delayedCount" />
 
     <TextView
         android:id="@+id/no_internet_text"
@@ -159,11 +159,11 @@
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/dashboard_orderCount"
         style="@style/headline8_grey"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="8"
+        android:text="0"
         android:textAlignment="center"
         android:textSize="56sp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
@@ -171,11 +171,11 @@
         app:layout_constraintStart_toStartOf="@+id/textView6" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/dashboard_deliveryCount"
         style="@style/headline8_grey"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="4"
+        android:text="0"
         android:textAlignment="center"
         android:textSize="56sp"
         app:layout_constraintBottom_toTopOf="@+id/textView8"

@@ -55,10 +55,10 @@
         android:layout_height="28dp"
         android:layout_marginEnd="18dp"
         android:layout_marginBottom="4dp"
-        android:tint="@color/green_200"
+        app:tint="@color/green_200"
         app:layout_constraintBottom_toTopOf="@+id/product_quantity_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/circle" />
+        tools:srcCompat="@drawable/circle" />
 
     <TextView
         android:id="@+id/product_quantity"

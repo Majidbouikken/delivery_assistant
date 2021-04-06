@@ -1,23 +1,16 @@
 package com.example.deliveryassistant.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.deliveryassistant.R
-import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.models.Product
 import com.example.deliveryassistant.utils.MyNumberFormat
-import com.example.deliveryassistant.view.ProductsFragment
-import com.google.common.io.Resources
-import java.lang.reflect.Array.getInt
 
 class ProductAdapter(private val context: Context, var data: List<Product>) :
     RecyclerView.Adapter<ProductViewHolder>() {

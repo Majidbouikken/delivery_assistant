@@ -19,10 +19,10 @@ class UserViewModel : ViewModel() {
         return userListData
     }
 
-    fun login(email: String, password: String) {
+    /*fun login(email: String, password: String) {
         val call = RetrofitService.endpoint.login(email, password )
-        call.enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>, response: Response<User>) {
+        call.enqueue(object : Callback<List<User>> {
+            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 if (response.isSuccessful) {
 
                     userListData.postValue(response.body())
@@ -31,10 +31,10 @@ class UserViewModel : ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<User>, t: Throwable) {
+            override fun onFailure(call: Call<List<User>>, t: Throwable) {
                 // Toast.makeText(this@RecyclerViewActivity, "Error in getting data from api.", Toast.LENGTH_LONG).show()
                 userListData.postValue(null)
             }
         })
-    }
+    }*/
 }
