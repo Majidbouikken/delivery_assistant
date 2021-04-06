@@ -61,7 +61,6 @@ class OrderAdapter(private val context: Context) :
         // order status (delayed or delivered)
         if (data[position].status == "delivered") {
             holder.orderStatus.setImageResource(R.drawable.ic_checkmark)
-            holder.orderStatus.setColorFilter(R.color.green_600)
             holder.orderStatus.visibility = View.VISIBLE
         } else if (DateParser.dateToLong(data[position].date) < DateParser.dateToLong(
                 DateParser.dateToString(
@@ -70,7 +69,6 @@ class OrderAdapter(private val context: Context) :
             )
         ) {
             holder.orderStatus.setImageResource(R.drawable.ic_alert)
-            holder.orderStatus.setColorFilter(R.color.red_500)
             holder.orderStatus.visibility = View.VISIBLE
         } else {
             holder.orderStatus.visibility = View.INVISIBLE
