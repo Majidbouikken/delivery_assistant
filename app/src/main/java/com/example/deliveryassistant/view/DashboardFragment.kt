@@ -11,6 +11,7 @@ import com.example.deliveryassistant.R
 import com.example.deliveryassistant.RetrofitService
 import com.example.deliveryassistant.ScanActivity
 import com.example.deliveryassistant.models.UserDashboard
+import com.example.deliveryassistant.utils.ConnectivityStatus
 import com.example.deliveryassistant.utils.DateParser
 import com.example.deliveryassistant.utils.EnglishNumberToWords
 import com.google.zxing.integration.android.IntentIntegrator
@@ -33,7 +34,7 @@ class DashboardFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         // show a warning if there's no internet connection
-        if (!isOnline()) showInternetWarning()
+        if (!ConnectivityStatus.isOnline()) showInternetWarning()
         // barcode scanner
         scanActionButton.setOnClickListener {
             val integrator: IntentIntegrator = IntentIntegrator(activity)
@@ -130,19 +131,5 @@ class DashboardFragment : Fragment() {
         delayed_icon.visibility = View.INVISIBLE
         delayed_count.visibility = View.INVISIBLE
         delayed_text.visibility = View.INVISIBLE
-    }
-
-    fun isOnline(): Boolean {
-        val runtime = Runtime.getRuntime()
-        try {
-            val ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8")
-            val exitValue = ipProcess.waitFor()
-            return exitValue == 0
-        } catch (e: IOException) {
-            e.printStackTrace()
-        } catch (e: InterruptedException) {
-            e.printStackTrace()
-        }
-        return false
     }
 }
