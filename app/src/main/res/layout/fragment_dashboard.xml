@@ -67,22 +67,11 @@
         android:layout_height="44dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/rounded_card"
-        app:tint="@color/red_100"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/view3"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
-
-    <ImageView
-        android:id="@+id/no_internet_frame"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/rounded_card"
-        app:tint="@color/yellow_100"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/delayed_frame" />
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:tint="@color/red_100" />
 
     <ImageView
         android:id="@+id/delayed_icon"
@@ -90,10 +79,51 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_alert"
-        app:tint="@color/red_500"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/delayed_frame"
         app:layout_constraintStart_toStartOf="@+id/delayed_frame"
+        app:layout_constraintTop_toTopOf="@+id/delayed_frame"
+        app:tint="@color/red_500" />
+
+    <TextView
+        android:id="@+id/delayed_count"
+        style="@style/headline3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/red_500"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/delayed_frame"
+        app:layout_constraintStart_toEndOf="@+id/delayed_icon"
         app:layout_constraintTop_toTopOf="@+id/delayed_frame" />
+
+    <TextView
+        android:id="@+id/delayed_text"
+        style="@style/headline3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/deliveries_are_delayed_by_48_hours"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/delayed_count"
+        app:layout_constraintEnd_toEndOf="@+id/delayed_frame"
+        app:layout_constraintStart_toEndOf="@+id/delayed_count"
+        app:layout_constraintTop_toTopOf="@+id/delayed_count" />
+
+    <ImageView
+        android:id="@+id/no_internet_frame"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/rounded_card"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@+id/delayed_frame"
+        app:tint="@color/yellow_100" />
 
     <ImageView
         android:id="@+id/no_internet_icon"
@@ -101,36 +131,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_caution"
-        app:tint="@color/yellow_500"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/no_internet_frame"
         app:layout_constraintStart_toStartOf="@+id/no_internet_frame"
-        app:layout_constraintTop_toTopOf="@+id/no_internet_frame" />
-
-    <TextView
-        android:id="@+id/dashboard_delayedCount"
-        style="@style/headline3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Three"
-        android:textColor="@color/red_500"
-        app:layout_constraintBottom_toBottomOf="@+id/delayed_frame"
-        app:layout_constraintStart_toEndOf="@+id/delayed_icon"
-        app:layout_constraintTop_toTopOf="@+id/delayed_frame" />
-
-    <TextView
-        android:id="@+id/textView9"
-        style="@style/headline3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text=" deliveries are delayed by 48 hours!"
-        app:layout_constraintBottom_toBottomOf="@+id/dashboard_delayedCount"
-        app:layout_constraintEnd_toEndOf="@+id/delayed_frame"
-        app:layout_constraintStart_toEndOf="@+id/dashboard_delayedCount"
-        app:layout_constraintTop_toTopOf="@+id/dashboard_delayedCount" />
+        app:layout_constraintTop_toTopOf="@+id/no_internet_frame"
+        app:tint="@color/yellow_500" />
 
     <TextView
         android:id="@+id/no_internet_text"
@@ -142,6 +147,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:text="There is no internet connection!"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/no_internet_frame"
         app:layout_constraintEnd_toEndOf="@+id/no_internet_frame"
         app:layout_constraintStart_toEndOf="@+id/no_internet_icon"
@@ -217,7 +223,7 @@
         app:layout_constraintTop_toTopOf="@+id/view3" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/scanActionButton"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginBottom="10dp"

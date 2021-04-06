@@ -17,9 +17,9 @@ class ProductActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
-        val order_id = intent.getStringExtra("order_id")
-        if (order_id != null) {
-            loadProducts(order_id.toInt())
+        val orderId = intent.getStringExtra("order_id")
+        if (orderId != null) {
+            loadProducts(orderId.toInt())
         }
     }
 

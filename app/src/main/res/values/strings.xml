@@ -4,4 +4,6 @@
     <string name="you_ve">You\'ve got&#160;</string>
     <string name="order_left">&#160;order left.</string>
     <string name="orders_left">&#160;orders left.</string>
+    <string name="delivery_is_delayed_by_48_hours">&#160;delivery is delayed by 48 hours!</string>
+    <string name="deliveries_are_delayed_by_48_hours">&#160;deliveries are delayed by 48 hours!</string>
 </resources>

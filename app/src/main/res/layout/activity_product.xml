@@ -12,12 +12,13 @@
         style="@style/headline7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding"
+        android:layout_marginStart="@dimen/small_padding"
         android:layout_marginTop="@dimen/start_padding"
         android:layout_marginEnd="@dimen/padding"
         android:text="Products"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -42,4 +43,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="@dimen/padding"
+        android:layout_marginTop="@dimen/start_padding"
+        android:contentDescription="product_back_arrow"
+        android:src="@drawable/ic_arrow_back_outline"
+        app:layout_constraintBottom_toBottomOf="@+id/title_orders2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
 </androidx.constraintlayout.widget.ConstraintLayout>

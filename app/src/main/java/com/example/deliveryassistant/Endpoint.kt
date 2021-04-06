@@ -27,6 +27,9 @@ interface Endpoint {
     ): Call<String>
 
     // 4 Enpoints of the Dashboard
-    @GET("getDashboardData/{user_id}")
-    fun getDashboardData(@Path("user_id") user_id: Int): Call<List<UserDashboard>>
+    @GET("getDashboardData/{delaydate}/{user_id}")
+    fun getDashboardData(
+        @Path("delaydate") delaydate: String,
+        @Path("user_id") user_id: Int
+    ): Call<List<UserDashboard>>
 }
