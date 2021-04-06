@@ -11,6 +11,7 @@ import com.example.deliveryassistant.R
 import com.example.deliveryassistant.RetrofitService
 import com.example.deliveryassistant.ScanActivity
 import com.example.deliveryassistant.models.UserDashboard
+import com.example.deliveryassistant.utils.DateParser
 import com.example.deliveryassistant.utils.EnglishNumberToWords
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
@@ -31,7 +32,9 @@ class DashboardFragment : Fragment() {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        // show a warning if there's no internet connection
         if (!isOnline()) showInternetWarning()
+        // barcode scanner
         scanActionButton.setOnClickListener {
             val integrator: IntentIntegrator = IntentIntegrator(activity)
             integrator.captureActivity = ScanActivity::class.java
@@ -40,6 +43,7 @@ class DashboardFragment : Fragment() {
             integrator.setPrompt("Scanning Code")
             integrator.initiateScan()
         }
+        // get dashboard data
         loadOrdersCount(1)
         super.onActivityCreated(savedInstanceState)
     }
@@ -62,14 +66,7 @@ class DashboardFragment : Fragment() {
 
     private fun loadOrdersCount(user_id: Int) {
         // getting the delay date
-        val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DAY_OF_YEAR, -1)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-        val month = calendar.get(Calendar.MONTH) + 1
-        val year = calendar.get(Calendar.YEAR)
-        val delaydate =
-            (year.toString() + '-' + month.toString().padStart(2, '0') + '-' + day.toString()
-                .padStart(2, '0'))
+        val delaydate = DateParser.dateToString(-1)
         // setting up the call
         val call = RetrofitService.endpoint.getDashboardData(delaydate, user_id)
         call.enqueue(object : Callback<List<UserDashboard>> {

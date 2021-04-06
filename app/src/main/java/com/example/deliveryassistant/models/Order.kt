@@ -15,6 +15,8 @@ data class Order(
     val phone_number: String,
     val barcode: String,
     val avatar_url: String,
-    val total_price: Int
+    val total_price: Int,
+    val date: String,
+    val status: String
 ) {
 }

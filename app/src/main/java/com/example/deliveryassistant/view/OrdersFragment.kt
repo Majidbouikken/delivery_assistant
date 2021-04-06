@@ -90,5 +90,4 @@ class OrdersFragment : Fragment() {
         no_orders_icon.visibility = View.INVISIBLE
         no_orders_text.visibility = View.INVISIBLE
     }
-
 }

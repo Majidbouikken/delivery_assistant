@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.deliveryassistant.view.ProductActivity
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.models.Order
+import com.example.deliveryassistant.utils.DateParser
 import com.example.deliveryassistant.utils.MyNumberFormat
 
 class OrderAdapter(private val context: Context) :
@@ -40,18 +41,38 @@ class OrderAdapter(private val context: Context) :
                 0 -> context.resources.getDimensionPixelOffset(R.dimen.start_padding)
                 else -> context.resources.getDimensionPixelOffset(R.dimen.padding)
             }, context.resources.getDimensionPixelOffset(R.dimen.padding), when (position) {
-                (data.size-1) -> context.resources.getDimensionPixelOffset(R.dimen.padding)
+                (data.size - 1) -> context.resources.getDimensionPixelOffset(R.dimen.padding)
                 else -> 0
             }, context.resources.getDimensionPixelOffset(R.dimen.padding)
         )
 
         // setting up data
         holder.orderNumber.text = data[position].id.toString()
-        holder.orderName.text = (data[position].first_name+" "+data[position].last_name)
+        holder.orderName.text = (data[position].first_name + " " + data[position].last_name)
         holder.orderEmail.text = data[position].email
         holder.orderPhoneNumber.text = MyNumberFormat.phoneNumberFormat(data[position].phone_number)
         holder.orderAddress.text = data[position].address
-        holder.orderPrice.text = MyNumberFormat.thousandSeparator(data[position].total_price.toLong())
+        holder.orderPrice.text =
+            MyNumberFormat.thousandSeparator(data[position].total_price.toLong())
+
+        // order status (delayed or delivered)
+        if (data[position].status == "delivered") {
+            holder.orderStatus.setImageResource(R.drawable.ic_checkmark)
+            holder.orderStatus.setColorFilter(R.color.green_600)
+            holder.orderStatus.visibility = View.VISIBLE
+        } else if (DateParser.dateToLong(data[position].date) < DateParser.dateToLong(
+                DateParser.dateToString(
+                    -2
+                )
+            )
+        ) {
+            holder.orderStatus.setImageResource(R.drawable.ic_alert)
+            holder.orderStatus.setColorFilter(R.color.red_500)
+            holder.orderStatus.visibility = View.VISIBLE
+        } else {
+            holder.orderStatus.visibility = View.INVISIBLE
+        }
+
 
         // the image
         Glide.with(context)
@@ -80,4 +101,5 @@ class OrderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val orderLayout = view.findViewById(R.id.order_layout) as ConstraintLayout
     val orderProductButton = view.findViewById(R.id.order_product_button) as ImageView
     val orderAvatar = view.findViewById(R.id.order_avatar) as ImageView
+    val orderStatus = view.findViewById(R.id.order_ic_status) as ImageView
 }

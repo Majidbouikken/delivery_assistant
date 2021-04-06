@@ -42,8 +42,8 @@
         style="@style/headline1_bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="@dimen/dzd_padding"
+        android:layout_marginEnd="@dimen/dzd_padding"
         android:text="2 700"
         android:textColor="@color/green_600"
         app:layout_constraintEnd_toStartOf="@+id/product_DZD"
@@ -51,13 +51,13 @@
 
     <ImageView
         android:id="@+id/product_quantity_circle"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="4dp"
-        app:tint="@color/green_200"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="@dimen/padding"
+        android:layout_marginBottom="@dimen/dzd_padding"
         app:layout_constraintBottom_toTopOf="@+id/product_quantity_title"
         app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/green_200"
         tools:srcCompat="@drawable/circle" />
 
     <TextView
@@ -78,7 +78,7 @@
         style="@style/headline1_DZD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="@dimen/dzd_padding"
         android:text="DZD"
         android:textColor="@color/green_600"
         app:layout_constraintBottom_toBottomOf="@+id/product_price"
@@ -110,7 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="64dp" />
+        app:layout_constraintGuide_end="72dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/product_horizontal_guideline"
