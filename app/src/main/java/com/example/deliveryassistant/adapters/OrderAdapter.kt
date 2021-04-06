@@ -2,19 +2,22 @@ package com.example.deliveryassistant.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.deliveryassistant.view.ProductActivity
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.utils.DateParser
 import com.example.deliveryassistant.utils.MyNumberFormat
+import com.example.deliveryassistant.view.ProductActivity
+
 
 class OrderAdapter(private val context: Context) :
     RecyclerView.Adapter<OrderViewHolder>() {

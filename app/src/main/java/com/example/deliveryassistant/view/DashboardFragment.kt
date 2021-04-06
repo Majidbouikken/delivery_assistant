@@ -20,8 +20,6 @@ import kotlinx.android.synthetic.main.fragment_dashboard.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.IOException
-import java.util.*
 
 
 class DashboardFragment : Fragment() {

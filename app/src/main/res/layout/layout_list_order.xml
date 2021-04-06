@@ -313,7 +313,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_padding"
         android:layout_marginEnd="@dimen/small_padding"
-        android:tint="@color/red_500"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/order_ticket"
         app:layout_constraintTop_toTopOf="@+id/order_ticket"
