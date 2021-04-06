@@ -20,6 +20,9 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        google_buttnon.setOnClickListener{
+            startActivity(Intent(this, MainActivity::class.java))
+        }
         login_button.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             val call = RetrofitService.endpoint.login("ha_tlili@esi.dz", "hatlili123")
