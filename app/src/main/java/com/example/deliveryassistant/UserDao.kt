@@ -10,12 +10,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface UsersDao {
 
-    @Query("SELECT * FROM users ORDER BY id ASC LIMIT 1")
-    fun getUser(): User
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUser(user: User)
+    fun insertUser(user: User)
+
+    @Query("SELECT * FROM users")
+    fun getUser(): List<User>
 
     @Query("DELETE FROM users")
-    suspend fun deleteUser()
+    fun deleteUser()
 }

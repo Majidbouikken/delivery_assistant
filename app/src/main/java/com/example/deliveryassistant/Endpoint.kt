@@ -13,10 +13,10 @@ interface Endpoint {
 
     // 2 Endpoints to display orders and products
     @GET("getOrders/{user_id}")
-    fun getOrders(@Path("user_id") user_id: Int): Call<List<Order>>
+    suspend fun getOrders(@Path("user_id") user_id: Int): List<Order>
 
     @GET("getProducts/{order_id}")
-    fun getProducts(@Path("order_id") order_id: Int): Call<List<Product>>
+    suspend fun getProducts(@Path("order_id") order_id: Int): Call<List<Product>>
 
     // 3 Endpoints to validate a delivery
     @POST("order/update/{order_id}/{barcode}")

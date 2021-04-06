@@ -2,13 +2,18 @@ package com.example.deliveryassistant.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.example.deliveryassistant.R
@@ -16,10 +21,13 @@ import com.example.deliveryassistant.adapters.OrderAdapter
 import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.utils.EnglishNumberToWords
 import com.example.deliveryassistant.viewModels.OrdersViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_orders.*
 
+@Suppress("DEPRECATION")
 class OrdersFragment : Fragment() {
     lateinit var orderAdapter: OrderAdapter
+    private val viewModel: OrdersViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,9 +37,15 @@ class OrdersFragment : Fragment() {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        initRecyclerView()
-        getOrdersData()
         super.onActivityCreated(savedInstanceState)
+        initRecyclerView()
+        viewModel.orders.observe(viewLifecycleOwner) {result ->
+            orderAdapter.setListData(result.data as ArrayList<Order>)
+            orderAdapter.notifyDataSetChanged()
+
+
+        }
+        //getOrdersData()
     }
 
     @SuppressLint("WrongConstant")
@@ -42,7 +56,7 @@ class OrdersFragment : Fragment() {
         ordersRecyclerView.adapter = orderAdapter
     }
 
-    private fun getOrdersData() {
+    /*private fun getOrdersData() {
         showProgressBar()
         val viewModel = ViewModelProvider(
             this
@@ -68,7 +82,7 @@ class OrdersFragment : Fragment() {
 
         })
         viewModel.getOrders(1)
-    }
+    }*/
 
     private fun showProgressBar() {
         orders_progressBar.visibility = View.VISIBLE

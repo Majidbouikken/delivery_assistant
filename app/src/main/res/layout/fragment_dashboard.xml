@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/dashboard_user_name"
         style="@style/headline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
         android:background="@drawable/rounded_card"
         app:layout_constraintEnd_toStartOf="@+id/dashboard_guideline_1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/dashboard_user_name" />
 
     <View
         android:id="@+id/view3"

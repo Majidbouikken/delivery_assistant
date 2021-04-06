@@ -3,15 +3,22 @@ package com.example.deliveryassistant.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.deliveryassistant.RetrofitService
+import androidx.lifecycle.asLiveData
 import com.example.deliveryassistant.models.Order
+import com.example.deliveryassistant.repositories.OrdersRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class OrdersViewModel : ViewModel() {
+@HiltViewModel
+class OrdersViewModel @Inject constructor(
+    repository: OrdersRepository
+) : ViewModel() {
+    val orders = repository.getOrders().asLiveData()
 
-    var orderListData: MutableLiveData<List<Order>> = MutableLiveData()
+    /*var orderListData: MutableLiveData<List<Order>> = MutableLiveData()
 
 
     fun getOrderListDataObserver(): LiveData<List<Order>> {
@@ -34,5 +41,5 @@ class OrdersViewModel : ViewModel() {
                 orderListData.postValue(null)
             }
         })
-    }
+    }*/
 }

@@ -3,7 +3,6 @@ package com.example.deliveryassistant.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.deliveryassistant.RetrofitService
 import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.models.Product
 import retrofit2.Call
@@ -18,7 +17,7 @@ class ProductsViewModels : ViewModel() {
         return productsListData
     }
 
-    fun getProducts(order_id: Int) {
+    /*fun getProducts(order_id: Int) {
         val call = RetrofitService.endpoint.getProducts(order_id)
         call.enqueue(object : Callback<List<Product>> {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
@@ -34,5 +33,5 @@ class ProductsViewModels : ViewModel() {
                 productsListData.postValue(null)
             }
         })
-    }
+    }*/
 }

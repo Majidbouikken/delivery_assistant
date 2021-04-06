@@ -60,7 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_card"
-        android:onClick="confirmInput"
+        android:onClick="login"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="@+id/input_field_password"
         app:layout_constraintStart_toStartOf="@+id/input_field_password"
