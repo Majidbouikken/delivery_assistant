@@ -68,63 +68,11 @@ class MapFragment : Fragment() {
     }*/
 
     private val callback = OnMapReadyCallback { googleMap ->
-        val sydney = LatLng(-34.0, 151.0)
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(11f))
-
-        /*val latitude = 36.74107390905088
-        //35.71413189162127
-        val longitude = 5.545641569204229
-        val destination = LatLng(latitude!!, longitude!!)
-        val zoomLevel = 15F
-
-
-        val lat = 35.74107390905088
-        val lng = 4.545641569204229
-        val origine=LatLng(lat,lng)
-        mMap.addMarker(MarkerOptions().position(destination).title("commande place"))
-        mMap.addMarker(MarkerOptions().position(origine).title(("my location")))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(destination,zoomLevel))
-        enableMyLocation()
-        enableMyLocation()
-        val path: MutableList<List<LatLng>> = ArrayList()
-        val urlDirections = "https://maps.googleapis.com/maps/api/directions/json?origin="+lat.toString()+","+lng.toString()+"&destination="+latitude.toString()+","+longitude.toString()+"&key="+getString(R.string.google_maps_key)
-
-        /*mLastLocation = location
-        if (mCurrLocationMarker != null) {
-            mCurrLocationMarker!!.remove()
-        }*/
-        //Place current location marker
-        /*val latLng = LatLng(location.latitude, location.longitude)
-        val markerOptions = MarkerOptions()
-        markerOptions.position(latLng)
-        markerOptions.title("Current Position")
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-        mCurrLocationMarker = mMap!!.addMarker(markerOptions)*/
-        val directionsRequest = object : StringRequest(Request.Method.GET, urlDirections, Response.Listener<String> {
-                response ->
-            val jsonResponse = JSONObject(response)
-            // Get routes
-            val routes = jsonResponse.getJSONArray("routes")
-            val legs = routes.getJSONObject(0).getJSONArray("legs")
-            val steps = legs.getJSONObject(0).getJSONArray("steps")
-            for (i in 0 until steps.length()) {
-                val points = steps.getJSONObject(i).getJSONObject("polyline").getString("points")
-                path.add(PolyUtil.decode(points))
-            }
-            for (i in 0 until path.size) {
-                this.mMap!!.addPolyline(PolylineOptions().addAll(path[i]).color(Color.RED))
-            }
-            var Duration=legs.getJSONObject(0).getJSONObject("duration").getString("text")
-            var Distance=legs.getJSONObject(0).getJSONObject("distance").getString("text")
-            Log.d("erp",Duration+Distance)
-            val disdur ="Temps estimé: "+Duration+"\nDistance estimé: "+Distance
-        }, Response.ErrorListener {
-                _ ->
-        }){}
-        val requestQueue = Volley.newRequestQueue(activity as Context)
-        requestQueue.add(directionsRequest)*/
+        val myLat = 35.697071
+        val myLng = -0.630799
+        val myLocation = LatLng(myLat, myLng)
+        googleMap.addMarker(MarkerOptions().position(myLocation).title(("My location")))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 13f))
     }
 
     override fun onCreateView(
