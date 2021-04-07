@@ -1,6 +1,5 @@
 package com.example.deliveryassistant.view
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,60 +9,77 @@ import androidx.fragment.app.Fragment
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.RetrofitService
 import com.example.deliveryassistant.ScanActivity
+import com.example.deliveryassistant.models.User
 import com.example.deliveryassistant.models.UserDashboard
 import com.example.deliveryassistant.utils.ConnectivityStatus
 import com.example.deliveryassistant.utils.DateParser
 import com.example.deliveryassistant.utils.EnglishNumberToWords
+import com.example.deliveryassistant.utils.SharedPreferenceInterface
 import com.google.zxing.integration.android.IntentIntegrator
-import com.google.zxing.integration.android.IntentResult
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : Fragment(), SharedPreferenceInterface {
+    lateinit var user: User
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // fetch data from sharedPreferences
+        user = getUser(requireContext())
         return inflater.inflate(R.layout.fragment_dashboard, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         // show a warning if there's no internet connection
         if (!ConnectivityStatus.isOnline()) showInternetWarning()
+        // Update UI to user data
+        welcome_first_name.text = (user.first_name.toString()+"!").trim()
         // barcode scanner
         scanActionButton.setOnClickListener {
             val integrator: IntentIntegrator = IntentIntegrator(activity)
             integrator.captureActivity = ScanActivity::class.java
             integrator.setOrientationLocked(false)
             integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES)
-            integrator.setPrompt("Scanning Code")
+            integrator.setPrompt("Scan the code bar on the package")
             integrator.initiateScan()
         }
         // get dashboard data
-        loadOrdersCount(1)
+        loadUserDashboard(1)
         super.onActivityCreated(savedInstanceState)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        val result: IntentResult =
-            IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        if (result != null) {
-            if (result.contents != null) {
-                val builder = AlertDialog.Builder(activity)
-                builder.setMessage(result.contents)
-                builder.setTitle("Scanning result")
-                val dialog = builder.create()
-                dialog.show()
-            }
-
+        val result= IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        if (result != null) if (result.contents == null) {
+        } else {
+            welcome_first_name.text = result.contents
+            validateOrder(2, result.contents)
         }
-        super.onActivityResult(requestCode, resultCode, data)
     }
 
-    private fun loadOrdersCount(user_id: Int) {
+    // function to validate an order
+    private fun validateOrder(id: Int, barcode: String) {
+        val call = RetrofitService.endpoint.updateOrder(id, barcode)
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(
+                call: Call<String>?, response:
+                Response<String>?
+            ) {
+            }
+
+            override fun onFailure(call: Call<String>?, t: Throwable?) {
+            }
+        })
+    }
+
+    // function to load dashboard data such as delayed deliveries and remaining deliveries
+
+    private fun loadUserDashboard(user_id: Int) {
         // getting the delay date
         val delaydate = DateParser.dateToString(-1)
         // setting up the call

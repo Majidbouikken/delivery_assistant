@@ -3,37 +3,37 @@ package com.example.deliveryassistant.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import com.example.deliveryassistant.MainActivity
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.RetrofitService
+import com.example.deliveryassistant.constant.NOM_FICHER_LOGIN
 import com.example.deliveryassistant.models.User
-import com.example.deliveryassistant.models.UserDashboard
+import com.example.deliveryassistant.utils.SharedPreferenceInterface
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.fragment_dashboard.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), SharedPreferenceInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        google_buttnon.setOnClickListener{
+        google_buttnon.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
         login_button.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            val call = RetrofitService.endpoint.login("ha_tlili@esi.dz", "hatlili123")
+            val call = RetrofitService.endpoint.login("oussa66@gmail.com", "oussama31")
             call.enqueue(object : Callback<List<User>> {
                 override fun onResponse(
                     call: Call<List<User>>?, response:
                     Response<List<User>>?
                 ) {
-                    val user = response?.body()!!
+                    val responseBody = response?.body()!!
                     if (response.isSuccessful) {
-                        intent.putExtra("user_id", user.first().id.toString())
+                        val user = responseBody.first()
+                        saveUserData(user)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                         finish()
@@ -71,6 +71,14 @@ class LoginActivity : AppCompatActivity() {
             input_password.error = null
             true
         }
+    }
+
+    // Save user data
+    private fun saveUserData(user: User) {
+        val pref = sharedPreference(this, NOM_FICHER_LOGIN)
+        pref.saveLoginDetails(
+            user.id.toString(), user.first_name!!, user.last_name!!, user.email!!, user.avatar_url!!
+        )
     }
 
     /*

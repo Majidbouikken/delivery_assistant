@@ -7,7 +7,7 @@
     tools:context=".view.DashboardFragment">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/welcome_back"
         style="@style/headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,14 +19,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/welcome_first_name"
         style="@style/headline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Abdelmadjid!"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="@+id/welcome_back"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_back" />
 
     <View
         android:id="@+id/view"
@@ -40,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/dashboard_guideline_1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/welcome_first_name" />
 
     <View
         android:id="@+id/view3"

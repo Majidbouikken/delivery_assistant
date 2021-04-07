@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title_orders">
 
         <ImageView
-            android:id="@+id/product_img2"
+            android:id="@+id/profile_avatar"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="20dp"
@@ -50,13 +50,12 @@
             app:layout_constraintGuide_begin="100dp" />
 
         <TextView
-            android:id="@+id/product_name2"
+            android:id="@+id/profile_name"
             style="@style/headline1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginStart="@dimen/padding"
+            android:layout_marginEnd="@dimen/padding"
             android:ellipsize="end"
             android:maxLines="2"
             android:text="Abderrahman Errached Tlili"
@@ -70,15 +69,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.6" />
+            app:layout_constraintGuide_percent="0.5" />
 
         <TextView
-            android:id="@+id/product_name3"
+            android:id="@+id/profile_email"
             style="@style/headline3_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:ellipsize="end"
             android:maxLines="2"

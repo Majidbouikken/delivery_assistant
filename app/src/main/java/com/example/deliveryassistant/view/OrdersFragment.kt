@@ -15,22 +15,25 @@ import com.example.deliveryassistant.R
 import com.example.deliveryassistant.adapters.OrderAdapter
 import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.utils.EnglishNumberToWords
+import com.example.deliveryassistant.utils.SharedPreferenceInterface
 import com.example.deliveryassistant.viewModels.OrdersViewModel
 import kotlinx.android.synthetic.main.fragment_orders.*
 
-class OrdersFragment : Fragment() {
+class OrdersFragment : Fragment(), SharedPreferenceInterface {
     lateinit var orderAdapter: OrderAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // fetch data from sharedPreferences
         return inflater.inflate(R.layout.fragment_orders, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        val userId = getUserId(requireContext())
         initRecyclerView()
-        getOrdersData()
+        getOrdersData(userId)
         super.onActivityCreated(savedInstanceState)
     }
 
@@ -42,7 +45,7 @@ class OrdersFragment : Fragment() {
         ordersRecyclerView.adapter = orderAdapter
     }
 
-    private fun getOrdersData() {
+    private fun getOrdersData(userId: Int?) {
         showProgressBar()
         val viewModel = ViewModelProvider(
             this
@@ -67,7 +70,7 @@ class OrdersFragment : Fragment() {
             }
 
         })
-        viewModel.getOrders(1)
+        viewModel.getOrders(userId!!)
     }
 
     private fun showProgressBar() {
