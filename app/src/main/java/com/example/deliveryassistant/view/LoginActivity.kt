@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity(), SharedPreferencesInterface {
         // login_button listener
         login_button.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
-            val call = RetrofitService.endpoint.login("ha_tlili@esi.dz", "hatlili123")
+            val call = RetrofitService.endpoint.login(input_email.text.toString(), input_password.text.toString())
             showDialog()
             call.enqueue(object : Callback<List<User>> {
                 override fun onResponse(

@@ -13,6 +13,5 @@ object MyNumberFormat {
             10
         ) + " " + phone_number.substring(10, 12))
     }
-
     fun thousandSeparator(num: Long): String = NumberFormat.getInstance(Locale.FRANCE).format(num)
 }

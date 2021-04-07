@@ -140,7 +140,7 @@ class DashboardFragment : Fragment(), SharedPreferencesInterface {
     // function to load dashboard data such as delayed deliveries and remaining deliveries
     private fun loadUserDashboard(user_id: Int) {
         // getting the delay date
-        val delaydate = DateParser.dateToString(-1)
+        val delaydate = DateParser.dateToString(-2)
         // setting up the call
         val call = RetrofitService.endpoint.getDashboardData(delaydate, user_id)
         call.enqueue(object : Callback<List<UserDashboard>> {
