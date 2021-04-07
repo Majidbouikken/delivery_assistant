@@ -18,6 +18,7 @@
         android:layout_marginEnd="@dimen/padding"
         android:layout_marginBottom="@dimen/padding"
         android:background="@drawable/rounded_card"
+        android:elevation="80dp"
         app:cnb_menuResource="@menu/bottom_menu"
         app:cnb_orientationMode="horizontal"
         app:cnb_radius="@dimen/elevation"
