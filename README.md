@@ -11,3 +11,4 @@ Delivery Assistant is a school project, as part of the TDM module
 - Display of remaining duration and distance on the google maps
 ## Demonstration video
 https://user-images.githubusercontent.com/42124832/113940796-f352be80-97f5-11eb-8c75-38c874e0ea0d.mp4
+![ezgif-4-e6379b48c8df](https://user-images.githubusercontent.com/42124832/113941693-83453800-97f7-11eb-85b7-1f619b8d366c.gif)
