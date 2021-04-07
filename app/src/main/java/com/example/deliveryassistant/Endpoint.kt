@@ -22,7 +22,7 @@ interface Endpoint {
     // 3 Endpoints to validate a delivery
     @POST("/updateOrder")
     fun updateOrder(
-        @Body barcode: String
+        @Body order: Order
     ):Call<String>
 
     // 4 Enpoints of the Dashboard

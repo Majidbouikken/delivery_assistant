@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.RetrofitService
 import com.example.deliveryassistant.ScanActivity
+import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.models.User
 import com.example.deliveryassistant.models.UserDashboard
 import com.example.deliveryassistant.utils.ConnectivityStatus
@@ -70,7 +71,23 @@ class DashboardFragment : Fragment(), SharedPreferencesInterface {
 
     // function to validate an order
     private fun validateOrder(barcode: String) {
-        val call = RetrofitService.endpoint.updateOrder(barcode)
+        val call = RetrofitService.endpoint.updateOrder(
+            Order(
+                0,
+                "",
+                "",
+                "",
+                "",
+                "",
+                barcode,
+                "",
+                0,
+                "",
+                "",
+                0.0,
+                0.0
+            )
+        )
         call.enqueue(object : Callback<String> {
             override fun onResponse(
                 call: Call<String>?, response:

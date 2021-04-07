@@ -17,6 +17,8 @@ data class Order(
     val avatar_url: String,
     val total_price: Int,
     val date: String,
-    val status: String
+    val status: String,
+    val lat: Double,
+    val lng: Double
 ) {
 }

@@ -36,7 +36,7 @@ import com.google.android.gms.maps.model.PolylineOptions
 import com.google.maps.android.PolyUtil
 
 class MapFragment : Fragment() {
-    private lateinit var mMap: GoogleMap
+    /*private lateinit var mMap: GoogleMap
     private val REQUEST_LOCATION_PERMISSION = 1
     private fun isPermissionGranted() : Boolean {
         return ContextCompat.checkSelfPermission(
@@ -65,7 +65,7 @@ class MapFragment : Fragment() {
                 enableMyLocation()
             }
         }
-    }
+    }*/
 
     private val callback = OnMapReadyCallback { googleMap ->
         val sydney = LatLng(-34.0, 151.0)
