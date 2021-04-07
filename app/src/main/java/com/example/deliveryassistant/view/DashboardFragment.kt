@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.work.*
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.RetrofitService
 import com.example.deliveryassistant.ScanActivity
@@ -19,11 +20,13 @@ import com.example.deliveryassistant.utils.ConnectivityStatus
 import com.example.deliveryassistant.utils.DateParser
 import com.example.deliveryassistant.utils.EnglishNumberToWords
 import com.example.deliveryassistant.utils.SharedPreferencesInterface
+import com.example.deliveryassistant.workers.OrderWorker
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.concurrent.TimeUnit
 
 
 class DashboardFragment : Fragment(), SharedPreferencesInterface {
@@ -66,11 +69,32 @@ class DashboardFragment : Fragment(), SharedPreferencesInterface {
             if (result.contents == null) {
                 Toast.makeText(activity, "Scanning failed", Toast.LENGTH_SHORT).show()
             } else {
-                validateOrder(result.contents)
+                // if there is internet then post it directly
+                if (ConnectivityStatus.isOnline()) validateOrder(result.contents)
+                // else start a service
+                else validateOrderWithWorker(result.contents)
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    // validate order with work manager
+    private fun validateOrderWithWorker(barcode: String) {
+        val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED)
+            .setRequiresBatteryNotLow(true).build()
+
+        val data =
+            Data.Builder().putString("barcode", barcode)
+
+        val req = PeriodicWorkRequest.Builder(
+            OrderWorker::class.java,
+            30, TimeUnit.SECONDS).setConstraints(constraints)
+            .setInputData(data.build()).build()
+
+        val workManager = WorkManager.getInstance(requireContext())
+
+        workManager.enqueueUniquePeriodicWork("myWork", ExistingPeriodicWorkPolicy.REPLACE, req)
     }
 
     // function to validate an order
@@ -115,7 +139,6 @@ class DashboardFragment : Fragment(), SharedPreferencesInterface {
     }
 
     // function to load dashboard data such as delayed deliveries and remaining deliveries
-
     private fun loadUserDashboard(user_id: Int) {
         // getting the delay date
         val delaydate = DateParser.dateToString(-1)
