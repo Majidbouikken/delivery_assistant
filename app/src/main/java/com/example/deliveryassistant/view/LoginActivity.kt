@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.deliveryassistant.MainActivity
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.RetrofitService
 import com.example.deliveryassistant.constant.NOM_FICHER_LOGIN
@@ -20,10 +19,10 @@ class LoginActivity : AppCompatActivity(), SharedPreferenceInterface {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         google_buttnon.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
         }
         login_button.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             val call = RetrofitService.endpoint.login("oussa66@gmail.com", "oussama31")
             call.enqueue(object : Callback<List<User>> {
                 override fun onResponse(

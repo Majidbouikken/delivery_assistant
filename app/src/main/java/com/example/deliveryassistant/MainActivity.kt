@@ -1,38 +1,35 @@
 package com.example.deliveryassistant
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import com.example.deliveryassistant.view.DashboardFragment
-import com.example.deliveryassistant.view.OrdersFragment
-import com.example.deliveryassistant.view.MapFragment
-import com.example.deliveryassistant.view.ProfileFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import android.os.Handler
+import android.os.Looper
+import com.example.deliveryassistant.utils.SharedPreferenceInterface
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SharedPreferenceInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // setting up the bottom navigation bar
-        bottom_nav_menu.setItemSelected(R.id.bottom_nav_dashboard, true)
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, DashboardFragment()).commit()
-        bottomNavigationMenu()
-    }
+        // Fetching userid
+        val userId = getUserId(this)
 
-    private fun bottomNavigationMenu() {
-        bottom_nav_menu.setOnItemSelectedListener {
-            var fragment: Fragment = Fragment()
-            when (it) {
-                R.id.bottom_nav_dashboard -> fragment = DashboardFragment()
-                R.id.bottom_nav_orders -> fragment = OrdersFragment()
-                R.id.bottom_nav_map -> fragment = MapFragment()
-                R.id.bottom_nav_profile -> fragment = ProfileFragment()
-            }
-            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment)
-                .commit()
+        /**
+         *  le code qui permet de passer a login activity
+         */
+
+        // checking whether the user was already connected
+        val intent = when(userId){
+            null -> Intent(this, com.example.deliveryassistant.view.LoginActivity::class.java)
+            else -> Intent(this, com.example.deliveryassistant.view.HomeActivity::class.java)
         }
-    }
 
+        // handler to keep the splash screen for a while
+        val handler = Handler(Looper.getMainLooper()).postDelayed({
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
+        }, 3000)
+    }
 }

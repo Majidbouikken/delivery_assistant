@@ -49,7 +49,7 @@ class DashboardFragment : Fragment(), SharedPreferenceInterface {
             integrator.initiateScan()
         }
         // get dashboard data
-        loadUserDashboard(1)
+        loadUserDashboard(user.id!!)
         super.onActivityCreated(savedInstanceState)
     }
 
@@ -89,9 +89,9 @@ class DashboardFragment : Fragment(), SharedPreferenceInterface {
                 call: Call<List<UserDashboard>>?, response:
                 Response<List<UserDashboard>>?
             ) {
-                val dashboardData = response?.body()!!
-                if (response.isSuccessful) {
+                if (response!!.isSuccessful) {
                     // setting up dashboard data
+                    val dashboardData = response.body()!!
                     val total = dashboardData.first().total
                     val delivered = dashboardData.first().delivered
                     val remaining = total - delivered
