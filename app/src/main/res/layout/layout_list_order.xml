@@ -11,7 +11,7 @@
     <View
         android:id="@+id/order_ticket"
         android:layout_width="280dp"
-        android:layout_height="320dp"
+        android:layout_height="280dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_card"
         android:visibility="visible"
@@ -61,7 +61,6 @@
         android:layout_marginStart="@dimen/small_padding"
         android:text="TOTAL"
         android:textAlignment="textStart"
-        app:layout_constraintEnd_toEndOf="@+id/order_remainging_time"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/order_id" />
 
@@ -85,10 +84,10 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:text="Rue st. Michelle 3eme arrondissement Paris"
-        app:layout_constraintEnd_toEndOf="@+id/order_address_title"
+        app:layout_constraintEnd_toEndOf="@+id/map_remaining_time"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/order_address_title"
-        app:layout_constraintTop_toBottomOf="@+id/order_address_title" />
+        app:layout_constraintStart_toStartOf="@+id/map_remaining_time"
+        app:layout_constraintTop_toBottomOf="@+id/map_remaining_time" />
 
     <TextView
         android:id="@+id/order_id"
@@ -100,8 +99,8 @@
         android:text="ID"
         android:textAlignment="textStart"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="@+id/order_ic_remaining_time_circle"
-        app:layout_constraintTop_toBottomOf="@+id/order_remainging_time" />
+        app:layout_constraintStart_toStartOf="@+id/order_ic_address_circle"
+        app:layout_constraintTop_toBottomOf="@+id/order_address" />
 
     <TextView
         android:id="@+id/order_phone_number_title"
@@ -125,33 +124,12 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <ImageView
-        android:id="@+id/order_ic_remaining_time_circle"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        app:layout_constraintBottom_toBottomOf="@+id/order_remainging_time"
-        app:layout_constraintStart_toStartOf="@+id/order_ic_address_circle"
-        app:layout_constraintTop_toTopOf="@+id/order_remaining_time"
-        app:srcCompat="@drawable/circle"
-        app:tint="@color/green_200" />
-
-    <ImageView
-        android:id="@+id/order_ic_remaining_time"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/order_ic_remaining_time_circle"
-        app:layout_constraintEnd_toEndOf="@+id/order_ic_remaining_time_circle"
-        app:layout_constraintStart_toStartOf="@+id/order_ic_remaining_time_circle"
-        app:layout_constraintTop_toTopOf="@+id/order_ic_remaining_time_circle"
-        app:srcCompat="@drawable/ic_clock"
-        app:tint="@color/green_600" />
-
-    <ImageView
         android:id="@+id/order_ic_address_circle"
         android:layout_width="28dp"
         android:layout_height="28dp"
         app:layout_constraintBottom_toBottomOf="@+id/order_address"
         app:layout_constraintStart_toStartOf="@+id/order_ic_phone_number_circle"
-        app:layout_constraintTop_toTopOf="@+id/order_address_title"
+        app:layout_constraintTop_toTopOf="@+id/map_remaining_time"
         app:srcCompat="@drawable/circle"
         app:tint="@color/green_200" />
 
@@ -203,7 +181,7 @@
         app:layout_constraintTop_toBottomOf="@+id/order_phone_number_title" />
 
     <TextView
-        android:id="@+id/order_address_title"
+        android:id="@+id/map_remaining_time"
         style="@style/headline3_grey"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -213,18 +191,6 @@
         app:layout_constraintEnd_toEndOf="@+id/order_phone_number_title"
         app:layout_constraintStart_toEndOf="@+id/order_ic_address_circle"
         app:layout_constraintTop_toBottomOf="@+id/order_phone_number" />
-
-    <TextView
-        android:id="@+id/order_remaining_time"
-        style="@style/headline3_grey"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_padding"
-        android:layout_marginTop="@dimen/small_padding"
-        android:text="Remaining time"
-        app:layout_constraintEnd_toEndOf="@+id/order_address_title"
-        app:layout_constraintStart_toEndOf="@+id/order_ic_remaining_time_circle"
-        app:layout_constraintTop_toBottomOf="@+id/order_address" />
 
     <ImageView
         android:id="@+id/order_ic_phone_number_circle"
@@ -246,18 +212,6 @@
         app:layout_constraintTop_toTopOf="@+id/order_ic_phone_number_circle"
         app:srcCompat="@drawable/ic_phone"
         app:tint="@color/green_600" />
-
-    <TextView
-        android:id="@+id/order_remainging_time"
-        style="@style/headline1"
-        android:layout_width="0dp"
-        android:layout_height="22dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="30 mins for delivery"
-        app:layout_constraintEnd_toEndOf="@+id/order_remaining_time"
-        app:layout_constraintStart_toStartOf="@+id/order_remaining_time"
-        app:layout_constraintTop_toBottomOf="@+id/order_remaining_time" />
 
 
     <ImageView

@@ -92,7 +92,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".OrderMapActivity"
+            android:name=".view.OrderMapActivity"
             android:label="@string/title_activity_order_map"></activity>
         <activity
             android:name=".view.LoginActivity"

@@ -8,14 +8,14 @@
     tools:context=".view.ProductsFragment" >
 
     <TextView
-        android:id="@+id/title_orders2"
+        android:id="@+id/title_products"
         style="@style/headline7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small_padding"
         android:layout_marginTop="@dimen/start_padding"
         android:layout_marginEnd="@dimen/padding"
-        android:text="Products"
+        android:text="Order products"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ic_return"
@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_orders2"
+        app:layout_constraintTop_toBottomOf="@+id/title_products"
         tools:listitem="@layout/layout_list_product">
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -52,7 +52,7 @@
         android:layout_marginTop="@dimen/start_padding"
         android:contentDescription="product_back_arrow"
         android:src="@drawable/ic_arrow_back_outline"
-        app:layout_constraintBottom_toBottomOf="@+id/title_orders2"
+        app:layout_constraintBottom_toBottomOf="@+id/title_products"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/black" />

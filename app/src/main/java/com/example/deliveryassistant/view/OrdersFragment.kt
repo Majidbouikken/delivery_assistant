@@ -50,26 +50,30 @@ class OrdersFragment : Fragment(), SharedPreferencesInterface {
         val viewModel = ViewModelProvider(
             this
         ).get(OrdersViewModel::class.java)
-        viewModel.getOrderListDataObserver().observe(viewLifecycleOwner, Observer<List<Order>> { result ->
-            if (!result.isNullOrEmpty()) {
-                hideProgressBar()
-                hideNoOrdersMessage()
-                // update fragment subtitle
-                you_got.text = getString(R.string.you_ve)
-                orders_count_text.text = EnglishNumberToWords.convert(result.size.toLong())
-                orders_left.text = when (result.size) {
-                    1 -> getString(R.string.order_left)
-                    else -> getString(R.string.orders_left)
+        viewModel.getOrderListDataObserver()
+            .observe(viewLifecycleOwner, Observer<List<Order>> { result ->
+                if (!result.isNullOrEmpty()) {
+                    hideProgressBar()
+                    hideNoOrdersMessage()
+                    // number of remaining orders
+                    var remaining: Int = 0
+                    for (o in result) if (o.status.isNullOrBlank()) remaining += 1
+                    // update fragment subtitle
+                    you_got.text = getString(R.string.you_ve)
+                    orders_count_text.text = EnglishNumberToWords.convert(remaining.toLong())
+                    orders_left.text = when (remaining) {
+                        1 -> getString(R.string.order_left)
+                        else -> getString(R.string.orders_left)
+                    }
+                    orderAdapter.setListData(result as ArrayList<Order>)
+                    orderAdapter.notifyDataSetChanged()
+
+                } else {
+                    hideProgressBar()
+                    showNoOrdersMessage()
                 }
-                orderAdapter.setListData(result as ArrayList<Order>)
-                orderAdapter.notifyDataSetChanged()
 
-            } else {
-                hideProgressBar()
-                showNoOrdersMessage()
-            }
-
-        })
+            })
         viewModel.getOrders(userId!!)
     }
 

@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.deliveryassistant.OrderMapActivity
+import com.example.deliveryassistant.view.OrderMapActivity
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.constant.LAT
 import com.example.deliveryassistant.constant.LNG
@@ -94,8 +94,8 @@ class OrderAdapter(private val context: Context) :
         // show one map listener
         holder.orderMapButton.setOnClickListener {
             val mapIntent = Intent(context, OrderMapActivity::class.java)
-            mapIntent.putExtra(LAT, 36.7625.toString())
-            mapIntent.putExtra(LNG, 3.02828.toString())
+            mapIntent.putExtra(LAT, data[position].lat.toString())
+            mapIntent.putExtra(LNG, data[position].lng.toString())
             mapIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(mapIntent)
         }
