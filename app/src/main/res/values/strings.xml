@@ -17,4 +17,5 @@
     <string name="log_in">Log in</string>
     <string name="email">Email</string>
     <string name="delivery_assistant">DELIVERY ASSISTANT</string>
+    <string name="title_activity_order_map">Map</string>
 </resources>

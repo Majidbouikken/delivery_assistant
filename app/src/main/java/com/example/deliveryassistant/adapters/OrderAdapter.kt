@@ -2,17 +2,18 @@ package com.example.deliveryassistant.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.deliveryassistant.OrderMapActivity
 import com.example.deliveryassistant.R
+import com.example.deliveryassistant.constant.LAT
+import com.example.deliveryassistant.constant.LNG
 import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.utils.DateParser
 import com.example.deliveryassistant.utils.MyNumberFormat
@@ -82,12 +83,21 @@ class OrderAdapter(private val context: Context) :
             .placeholder(R.drawable.circle)
             .into(holder.orderAvatar)
 
-        // the on click listener
+        // show products listener
         holder.orderProductButton.setOnClickListener {
-            val intent = Intent(context, ProductActivity::class.java)
-            intent.putExtra("order_id", data[position].id.toString())
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            context.startActivity(intent)
+            val productsIntent = Intent(context, ProductActivity::class.java)
+            productsIntent.putExtra("order_id", data[position].id.toString())
+            productsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(productsIntent)
+        }
+
+        // show one map listener
+        holder.orderMapButton.setOnClickListener {
+            val mapIntent = Intent(context, OrderMapActivity::class.java)
+            mapIntent.putExtra(LAT, 36.7625.toString())
+            mapIntent.putExtra(LNG, 3.02828.toString())
+            mapIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(mapIntent)
         }
     }
 }
@@ -101,6 +111,7 @@ class OrderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val orderPrice = view.findViewById(R.id.order_price) as TextView
     val orderLayout = view.findViewById(R.id.order_layout) as ConstraintLayout
     val orderProductButton = view.findViewById(R.id.order_product_button) as ImageView
+    val orderMapButton = view.findViewById(R.id.order_map_button) as ImageView
     val orderAvatar = view.findViewById(R.id.order_avatar) as ImageView
     val orderStatus = view.findViewById(R.id.order_ic_status) as ImageView
 }
