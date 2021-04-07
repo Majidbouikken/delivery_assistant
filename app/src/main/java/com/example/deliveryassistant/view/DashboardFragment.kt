@@ -2,6 +2,8 @@ package com.example.deliveryassistant.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +39,8 @@ class DashboardFragment : Fragment(), SharedPreferencesInterface {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        // making sure the dialog is hidden
+        hideDialog()
         // show a warning if there's no internet connection
         if (!ConnectivityStatus.isOnline()) showInternetWarning()
         // Update UI to user data
@@ -94,8 +98,10 @@ class DashboardFragment : Fragment(), SharedPreferencesInterface {
                 Response<String>?
             ) {
                 if (response!!.isSuccessful) {
-                    Toast.makeText(activity, "Order successfully scanned!", Toast.LENGTH_SHORT)
-                        .show()
+                    showDialog()
+                    val handler = Handler(Looper.getMainLooper()).postDelayed({
+                        hideDialog()
+                    }, 3000)
                 } else {
                     Toast.makeText(activity, "Codebar didn't match the order", Toast.LENGTH_SHORT)
                         .show()
@@ -176,5 +182,23 @@ class DashboardFragment : Fragment(), SharedPreferencesInterface {
         delayed_icon.visibility = View.INVISIBLE
         delayed_count.visibility = View.INVISIBLE
         delayed_text.visibility = View.INVISIBLE
+    }
+
+    // show Order validation dialog
+    private fun showDialog() {
+        scanActionButton.visibility = View.INVISIBLE
+        shadow_dashboard.visibility = View.VISIBLE
+        dialog_dashboard.visibility = View.VISIBLE
+        dialog_dashboard_icon.visibility = View.VISIBLE
+        dialog_dashboard_message.visibility = View.VISIBLE
+    }
+
+    // hide Order validation dialog
+    private fun hideDialog() {
+        scanActionButton.visibility = View.VISIBLE
+        shadow_dashboard.visibility = View.INVISIBLE
+        dialog_dashboard.visibility = View.INVISIBLE
+        dialog_dashboard_icon.visibility = View.INVISIBLE
+        dialog_dashboard_message.visibility = View.INVISIBLE
     }
 }

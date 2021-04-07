@@ -278,4 +278,56 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
+    <View
+        android:id="@+id/shadow_dashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/common_google_signin_btn_text_light_focused"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/dialog_dashboard"
+        android:layout_width="0dp"
+        android:layout_height="240dp"
+        android:layout_marginStart="@dimen/start_padding"
+        android:layout_marginEnd="@dimen/start_padding"
+        android:background="@drawable/rounded_card"
+        android:paddingStart="@dimen/start_padding"
+        android:paddingEnd="@dimen/start_padding"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/dialog_dashboard_icon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/ic_checkmark"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dialog_dashboard"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/dialog_dashboard"
+        app:layout_constraintTop_toTopOf="@+id/dialog_dashboard" />
+
+    <TextView
+        android:id="@+id/dialog_dashboard_message"
+        style="@style/headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginEnd="@dimen/padding"
+        android:text="Order was successfully validated!"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dialog_dashboard"
+        app:layout_constraintStart_toStartOf="@+id/dialog_dashboard"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_dashboard_icon" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
