@@ -18,6 +18,9 @@ class ProductActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
         val orderId = intent.getStringExtra("order_id")
+        ic_return.setOnClickListener {
+            this?.onBackPressed()
+        }
         if (orderId != null) {
             loadProducts(orderId.toInt())
         }
@@ -34,8 +37,7 @@ class ProductActivity : AppCompatActivity() {
                 val list = response?.body()!!
                 if (list.isEmpty()) {
                     hideProgressBar()
-                }
-                else {
+                } else {
                     hideProgressBar()
                     val adapter = ProductAdapter(application, list)
                     val layoutManager = LinearLayoutManager(application)

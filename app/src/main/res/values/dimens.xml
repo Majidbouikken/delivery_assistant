@@ -2,6 +2,7 @@
 <resources>
     <dimen name="small_padding">10dp</dimen>
     <dimen name="padding">20dp</dimen>
+    <dimen name="logo_padding">16dp</dimen>
     <dimen name="start_padding">40dp</dimen>
     <dimen name="dzd_padding">2dp</dimen>
     <dimen name="elevation">8dp</dimen>

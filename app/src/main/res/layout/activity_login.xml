@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/login_title" />
 
     <EditText
         android:id="@+id/input_password"
@@ -78,7 +78,8 @@
         android:layout_marginTop="@dimen/padding"
         android:background="@drawable/rounded_card"
         android:shadowColor="@color/teal_200"
-        android:text="@string/login"
+        android:text="@string/log_in"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/input_password"
         app:layout_constraintStart_toStartOf="@+id/input_password"
         app:layout_constraintTop_toBottomOf="@+id/input_password" />
@@ -131,9 +132,9 @@
 
     <ImageView
         android:id="@+id/google_g_logo"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="@dimen/padding"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="@dimen/small_padding"
         app:layout_constraintBottom_toBottomOf="@+id/google_buttnon"
         app:layout_constraintEnd_toStartOf="@+id/sign_in_with_google"
         app:layout_constraintTop_toTopOf="@+id/google_buttnon"
@@ -145,7 +146,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_medium"
-        android:text="@string/sign_in_with_google"
+        android:text="@string/log_in_with_google"
         android:textColor="@color/grey"
         app:layout_constraintBottom_toBottomOf="@+id/google_buttnon"
         app:layout_constraintEnd_toEndOf="@+id/google_buttnon"
@@ -154,15 +155,15 @@
         app:layout_constraintTop_toTopOf="@+id/google_buttnon" />
 
     <TextView
-        android:id="@+id/textView7"
-        style="@style/headline8"
+        android:id="@+id/login_title"
+        style="@style/login_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/start_padding"
-        android:text="@string/log_in"
+        android:layout_marginTop="@dimen/small_padding"
+        android:text="@string/app_name"
         app:layout_constraintEnd_toEndOf="@+id/input_email"
         app:layout_constraintStart_toStartOf="@+id/input_email"
-        app:layout_constraintTop_toBottomOf="@+id/divider_top" />
+        app:layout_constraintTop_toBottomOf="@+id/login_circle" />
 
     <View
         android:id="@+id/divider_bottom"
@@ -196,5 +197,77 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/forgot_your_login_credentials"
         app:layout_constraintStart_toStartOf="@+id/forgot_your_login_credentials" />
+
+    <ImageView
+        android:id="@+id/login_circle"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="@dimen/start_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_top"
+        app:srcCompat="@drawable/circle"
+        app:tint="@color/green_100" />
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/small_padding"
+        app:layout_constraintBottom_toBottomOf="@+id/login_circle"
+        app:layout_constraintEnd_toEndOf="@+id/login_circle"
+        app:layout_constraintStart_toStartOf="@+id/login_circle"
+        app:layout_constraintTop_toTopOf="@+id/login_circle"
+        app:srcCompat="@drawable/app_logo" />
+
+    <View
+        android:id="@+id/shadow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/common_google_signin_btn_text_light_focused"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/dialog"
+        android:layout_width="0dp"
+        android:layout_height="240dp"
+        android:layout_marginStart="@dimen/start_padding"
+        android:layout_marginEnd="@dimen/start_padding"
+        android:background="@drawable/rounded_card"
+        android:paddingStart="@dimen/start_padding"
+        android:paddingEnd="@dimen/start_padding"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/dialog_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/google_buttnon"
+        app:layout_constraintEnd_toEndOf="@+id/dialog"
+        app:layout_constraintStart_toStartOf="@+id/dialog"
+        app:layout_constraintTop_toTopOf="@+id/dialog"
+        app:layout_constraintVertical_bias="0.40" />
+
+    <TextView
+        android:id="@+id/dialog_message"
+        style="@style/headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding"
+        android:text="Loggin in"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dialog"
+        app:layout_constraintStart_toStartOf="@+id/dialog"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_progressBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
@@ -7,4 +8,83 @@
     android:background="@color/green_600"
     tools:context=".MainActivity">
 
+    <View
+        android:id="@+id/splash_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/small_padding"
+        android:background="@color/green_800"
+        app:layout_constraintBottom_toTopOf="@+id/a_tribute"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/splash_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/app_title"
+        style="@style/main_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delivery_assistant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/splash_guideline" />
+
+    <TextView
+        android:id="@+id/app_subtitle"
+        style="@style/headline1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/start_padding"
+        android:layout_marginEnd="@dimen/start_padding"
+        android:text="an mobile application 📱 that helps deliverymen with their job 🚚"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_title" />
+
+    <TextView
+        android:id="@+id/a_tribute"
+        style="@style/headline1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/start_padding"
+        android:layout_marginEnd="@dimen/start_padding"
+        android:layout_marginBottom="@dimen/small_padding"
+        android:text="Made with ❤ and 🤯by Abdelmadjid Bouikken and Majda Sitayeb"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo_circle"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginBottom="@dimen/logo_padding"
+        android:contentDescription="logo_circle"
+        app:layout_constraintBottom_toTopOf="@+id/splash_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/circle"
+        app:tint="@color/green_800" />
+
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="app_logo"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/logo_circle"
+        app:layout_constraintEnd_toEndOf="@+id/logo_circle"
+        app:layout_constraintStart_toStartOf="@+id/logo_circle"
+        app:layout_constraintTop_toTopOf="@+id/logo_circle"
+        app:srcCompat="@drawable/app_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

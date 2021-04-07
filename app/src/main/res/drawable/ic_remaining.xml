@@ -38,7 +38,7 @@
         android:fillColor="@color/blue_500"/>
     <path
         android:pathData="M144.835,298.756c-21.593,0 -40.819,10.028 -53.355,25.653H67.875H42.221v25.653c0,4.722 3.829,8.551 8.551,8.551h316.393v-34.205H198.19C185.654,308.784 166.428,298.756 144.835,298.756z"
-        android:fillColor="#268C7D"/>
+        android:fillColor="@color/green_800"/>
     <path
         android:pathData="M144.835,367.165m-42.756,0a42.756,42.756 0,1 1,85.512 0a42.756,42.756 0,1 1,-85.512 0"
         android:fillColor="#5B5D6E"/>
