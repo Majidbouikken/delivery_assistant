@@ -57,7 +57,7 @@
         android:layout_marginStart="@dimen/start_padding"
         android:layout_marginEnd="@dimen/start_padding"
         android:layout_marginBottom="@dimen/small_padding"
-        android:text="Made with ❤ and 🤯by Abdelmadjid Bouikken and Majda Sitayeb"
+        android:text="Made with ❤ and 🤯 by Abdelmadjid Bouikken and Majda Sitayeb"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

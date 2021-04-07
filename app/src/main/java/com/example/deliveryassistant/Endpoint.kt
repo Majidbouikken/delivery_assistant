@@ -20,11 +20,10 @@ interface Endpoint {
     fun getProducts(@Path("order_id") order_id: Int): Call<List<Product>>
 
     // 3 Endpoints to validate a delivery
-    @POST("updateOrder/{id}/{barcode}")
+    @POST("/updateOrder")
     fun updateOrder(
-        @Path("id") id: Int,
-        @Path("barcode") barcode: String
-    ): Call<String>
+        @Body barcode: String
+    ):Call<String>
 
     // 4 Enpoints of the Dashboard
     @GET("getDashboardData/{delaydate}/{user_id}")

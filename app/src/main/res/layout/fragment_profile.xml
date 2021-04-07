@@ -7,23 +7,46 @@
     android:layout_height="match_parent"
     tools:context=".view.OrdersFragment">
 
+    <View
+        android:id="@+id/profile_divider_top"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/padding"
+        android:background="@color/green_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <View
+        android:id="@+id/profile_divider_bottom"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/padding"
+        android:background="@color/green_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_settings_view" />
+
     <TextView
         android:id="@+id/title_orders"
         style="@style/headline7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="@dimen/padding"
+        android:layout_marginTop="@dimen/start_padding"
+        android:layout_marginEnd="@dimen/padding"
         android:text="Profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/padding"
         android:background="@drawable/rounded_card"
         app:layout_constraintEnd_toEndOf="@+id/title_orders"
         app:layout_constraintStart_toStartOf="@+id/title_orders"
@@ -87,5 +110,145 @@
             app:layout_constraintStart_toStartOf="@+id/product_vertical_guideline3"
             app:layout_constraintTop_toTopOf="@+id/product_horizontal_guideline2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/profile_theme_view"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/padding"
+        android:background="@drawable/rounded_card"
+        android:backgroundTint="@color/green_200"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/profile_divider_top" />
+
+    <View
+        android:id="@+id/profile_language_view"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/padding"
+        android:background="@drawable/rounded_card"
+        android:backgroundTint="@color/green_200"
+        app:layout_constraintEnd_toEndOf="@+id/profile_theme_view"
+        app:layout_constraintStart_toStartOf="@+id/profile_theme_view"
+        app:layout_constraintTop_toBottomOf="@+id/profile_theme_view" />
+
+    <View
+        android:id="@+id/profile_settings_view"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/padding"
+        android:background="@drawable/rounded_card"
+        android:backgroundTint="@color/green_200"
+        app:layout_constraintEnd_toEndOf="@+id/profile_language_view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profile_language_view"
+        app:layout_constraintTop_toBottomOf="@+id/profile_language_view" />
+
+    <View
+        android:id="@+id/profile_logout"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/padding"
+        android:background="@drawable/rounded_card"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/profile_settings_view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profile_settings_view"
+        app:layout_constraintTop_toBottomOf="@+id/profile_divider_bottom" />
+
+    <ImageView
+        android:id="@+id/profile_ic_theme"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_padding"
+        android:src="@drawable/ic_dark_theme"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_theme_view"
+        app:layout_constraintStart_toStartOf="@+id/profile_theme_view"
+        app:layout_constraintTop_toTopOf="@+id/profile_theme_view"
+        app:tint="@color/green_600"
+        android:layout_width="0dp" />
+
+    <ImageView
+        android:id="@+id/profile_ic_language"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_padding"
+        android:src="@drawable/ic_languages"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_language_view"
+        app:layout_constraintStart_toStartOf="@+id/profile_language_view"
+        app:layout_constraintTop_toTopOf="@+id/profile_language_view"
+        app:tint="@color/green_600" />
+
+    <ImageView
+        android:id="@+id/profile_ic_settings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_padding"
+        android:src="@drawable/ic_settings"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_settings_view"
+        app:layout_constraintStart_toStartOf="@+id/profile_settings_view"
+        app:layout_constraintTop_toTopOf="@+id/profile_settings_view"
+        app:tint="@color/green_600" />
+
+    <TextView
+        android:id="@+id/profile_theme_text"
+        style="@style/headline3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_padding"
+        android:layout_marginEnd="@dimen/small_padding"
+        android:text="Night / Light mode"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_theme_view"
+        app:layout_constraintEnd_toEndOf="@+id/profile_theme_view"
+        app:layout_constraintStart_toEndOf="@+id/profile_ic_theme"
+        app:layout_constraintTop_toTopOf="@+id/profile_theme_view" />
+
+    <TextView
+        android:id="@+id/profile_language_text"
+        style="@style/headline3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_padding"
+        android:layout_marginEnd="@dimen/small_padding"
+        android:text="Language"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_language_view"
+        app:layout_constraintEnd_toEndOf="@+id/profile_language_view"
+        app:layout_constraintStart_toEndOf="@+id/profile_ic_language"
+        app:layout_constraintTop_toTopOf="@+id/profile_language_view" />
+
+    <TextView
+        android:id="@+id/profile_settings_text"
+        style="@style/headline3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_padding"
+        android:layout_marginEnd="@dimen/small_padding"
+        android:text="Settings"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_settings_view"
+        app:layout_constraintEnd_toEndOf="@+id/profile_settings_view"
+        app:layout_constraintStart_toEndOf="@+id/profile_ic_settings"
+        app:layout_constraintTop_toTopOf="@+id/profile_settings_view" />
+
+    <ImageView
+        android:id="@+id/profile_ic_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_log_out"
+        app:tint="@color/red_500"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_logout"
+        app:layout_constraintEnd_toStartOf="@+id/profile_logout_text"
+        app:layout_constraintTop_toTopOf="@+id/profile_logout" />
+
+    <TextView
+        android:id="@+id/profile_logout_text"
+        style="@style/headline3_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log out"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_logout"
+        app:layout_constraintEnd_toEndOf="@+id/profile_logout"
+        app:layout_constraintStart_toStartOf="@+id/profile_logout"
+        app:layout_constraintTop_toTopOf="@+id/profile_logout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

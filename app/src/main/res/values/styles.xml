@@ -22,6 +22,9 @@
     <style name="headline3_grey" parent="headline3">
         <item name="android:textColor">#FF808080</item>
     </style>
+    <style name="headline3_logout" parent="headline3">
+        <item name="android:textColor">@color/red_500</item>
+    </style>
     <style name="headline5">
         <item name="android:fontFamily">@font/montserrat_semi_bold</item>
         <item name="android:textColor">@color/black</item>

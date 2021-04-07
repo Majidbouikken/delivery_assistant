@@ -15,11 +15,11 @@ import com.example.deliveryassistant.R
 import com.example.deliveryassistant.adapters.OrderAdapter
 import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.utils.EnglishNumberToWords
-import com.example.deliveryassistant.utils.SharedPreferenceInterface
+import com.example.deliveryassistant.utils.SharedPreferencesInterface
 import com.example.deliveryassistant.viewModels.OrdersViewModel
 import kotlinx.android.synthetic.main.fragment_orders.*
 
-class OrdersFragment : Fragment(), SharedPreferenceInterface {
+class OrdersFragment : Fragment(), SharedPreferencesInterface {
     lateinit var orderAdapter: OrderAdapter
 
     override fun onCreateView(

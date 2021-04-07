@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.deliveryassistant.R
 import com.example.deliveryassistant.RetrofitService
@@ -14,7 +15,7 @@ import com.example.deliveryassistant.models.UserDashboard
 import com.example.deliveryassistant.utils.ConnectivityStatus
 import com.example.deliveryassistant.utils.DateParser
 import com.example.deliveryassistant.utils.EnglishNumberToWords
-import com.example.deliveryassistant.utils.SharedPreferenceInterface
+import com.example.deliveryassistant.utils.SharedPreferencesInterface
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import retrofit2.Call
@@ -22,7 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class DashboardFragment : Fragment(), SharedPreferenceInterface {
+class DashboardFragment : Fragment(), SharedPreferencesInterface {
     lateinit var user: User
 
     override fun onCreateView(
@@ -38,41 +39,54 @@ class DashboardFragment : Fragment(), SharedPreferenceInterface {
         // show a warning if there's no internet connection
         if (!ConnectivityStatus.isOnline()) showInternetWarning()
         // Update UI to user data
-        welcome_first_name.text = (user.first_name.toString()+"!").trim()
+        welcome_first_name.text = (user.first_name.toString() + "!").trim()
+        // get dashboard data
+        loadUserDashboard(user.id!!)
         // barcode scanner
         scanActionButton.setOnClickListener {
-            val integrator: IntentIntegrator = IntentIntegrator(activity)
+            val integrator: IntentIntegrator = IntentIntegrator.forSupportFragment(this)
             integrator.captureActivity = ScanActivity::class.java
             integrator.setOrientationLocked(false)
             integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES)
             integrator.setPrompt("Scan the code bar on the package")
             integrator.initiateScan()
         }
-        // get dashboard data
-        loadUserDashboard(user.id!!)
         super.onActivityCreated(savedInstanceState)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        val result= IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        if (result != null) if (result.contents == null) {
+        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        val content = result.contents
+        if (result != null) {
+            if (result.contents == null) {
+                Toast.makeText(activity, "Scanning failed", Toast.LENGTH_SHORT).show()
+            } else {
+                validateOrder(result.contents)
+            }
         } else {
-            welcome_first_name.text = result.contents
-            validateOrder(2, result.contents)
+            super.onActivityResult(requestCode, resultCode, data)
         }
     }
 
     // function to validate an order
-    private fun validateOrder(id: Int, barcode: String) {
-        val call = RetrofitService.endpoint.updateOrder(id, barcode)
+    private fun validateOrder(barcode: String) {
+        val call = RetrofitService.endpoint.updateOrder(barcode)
         call.enqueue(object : Callback<String> {
             override fun onResponse(
                 call: Call<String>?, response:
                 Response<String>?
             ) {
+                if (response!!.isSuccessful) {
+                    Toast.makeText(activity, "Order successfully scanned!", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Toast.makeText(activity, "Codebar didn't match the order", Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
 
             override fun onFailure(call: Call<String>?, t: Throwable?) {
+                Toast.makeText(activity, "Scanning failed", Toast.LENGTH_SHORT).show()
             }
         })
     }

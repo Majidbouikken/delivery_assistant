@@ -8,12 +8,9 @@ class SharedPreferencesHelper(internal var context: Context, nom_fichier: String
     internal var sharedPreferences: SharedPreferences =
         context.getSharedPreferences(nom_fichier, Context.MODE_PRIVATE)
 
-    /**
-     * To set login details
-     * @param userName : username to set
-     * @param password : password to set
-     */
-    fun saveLoginDetails(
+
+    // to save login details after authentication
+    fun saveUserData(
         id: String,
         first_name: String,
         last_name: String,
@@ -29,40 +26,32 @@ class SharedPreferencesHelper(internal var context: Context, nom_fichier: String
         editor.apply()
     }
 
+    // to get the user data (useful for displaying ui)
     fun getUser(): User {
         val pref = sharedPreferences
         val id = pref.getString("user_id", null)?.toInt()
-        val first_name = pref.getString("user_first_name", null)
-        val last_name = pref.getString("user_last_name", null)
+        val firstName = pref.getString("user_first_name", null)
+        val lastName = pref.getString("user_last_name", null)
         val email = pref.getString("user_email", null)
-        val avatar_url = pref.getString("user_avatar_url", null)
+        val avatarUrl = pref.getString("user_avatar_url", null)
         return User(
-            id, first_name, last_name, email, "", avatar_url
+            id, firstName, lastName, email, "", avatarUrl
         )
     }
 
+    // to get the user id for further use (like GET and POST requests)
     fun getUserId(): Int? {
         val pref = sharedPreferences
         return pref.getString("user_id", null)?.toInt()
     }
 
-    /**
-     * To check and get login details
-     * @param userName : name to validate
-     * @param password : password to validate
-     * @return true : if valid user
-     * false : if valid password
-     */
-    /*fun isValidUser(userName: String, password: String): Boolean {
-        // to get username
-        Log.d(TAG, "username = " + sharedPreferences.getString("userName", null)!!)
-        Log.d(TAG, "password = " + sharedPreferences.getString("password", null)!!)
-
-        return this.sharedPreferences.getString(
-            "userName",
-            null
-        ) == userName && sharedPreferences.getString("password", null) == password
-    }*/
+    // function used to delete the whole thing
+    fun deleteData() {
+        val pref = sharedPreferences
+        val editor = pref.edit()
+        editor.clear()
+        editor.apply()
+    }
 
 
     companion object {

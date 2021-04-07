@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/welcome_back" />
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/deliveries_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/padding"
@@ -42,16 +42,16 @@
         app:layout_constraintTop_toBottomOf="@+id/welcome_first_name" />
 
     <View
-        android:id="@+id/view3"
+        android:id="@+id/delivered_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/small_padding"
         android:layout_marginEnd="@dimen/padding"
         android:background="@drawable/rounded_card"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintBottom_toBottomOf="@+id/deliveries_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/dashboard_guideline_1"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+        app:layout_constraintTop_toTopOf="@+id/deliveries_view" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/dashboard_guideline_1"
@@ -68,9 +68,9 @@
         android:layout_height="44dp"
         android:src="@drawable/rounded_card"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/delivered_view"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/deliveries_view"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
         app:tint="@color/red_100" />
 
@@ -120,9 +120,9 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/rounded_card"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/delivered_view"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/deliveries_view"
         app:layout_constraintTop_toBottomOf="@+id/delayed_frame"
         app:tint="@color/yellow_100" />
 
@@ -160,9 +160,9 @@
         android:layout_height="88dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/circle"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/deliveries_view"
+        app:layout_constraintStart_toStartOf="@+id/deliveries_view"
+        app:layout_constraintTop_toTopOf="@+id/deliveries_view"
         app:tint="@color/green_200" />
 
     <TextView
@@ -198,9 +198,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/padding"
         android:text="Today's deliveries"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view" />
+        app:layout_constraintBottom_toBottomOf="@+id/deliveries_view"
+        app:layout_constraintEnd_toEndOf="@+id/deliveries_view"
+        app:layout_constraintStart_toStartOf="@+id/deliveries_view" />
 
     <TextView
         android:id="@+id/textView8"
@@ -209,8 +209,8 @@
         android:layout_height="wrap_content"
         android:text="Delivered orders"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/delivered_view"
+        app:layout_constraintStart_toStartOf="@+id/delivered_view"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <ImageView
@@ -219,8 +219,8 @@
         android:layout_height="88dp"
         android:src="@drawable/circle"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/delivered_view"
+        app:layout_constraintStart_toStartOf="@+id/delivered_view"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
         app:tint="@color/green_200" />
 
