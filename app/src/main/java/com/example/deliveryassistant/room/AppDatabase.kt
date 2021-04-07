@@ -1,4 +1,4 @@
-package com.example.deliveryassistant
+package com.example.deliveryassistant.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

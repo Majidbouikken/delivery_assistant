@@ -1,4 +1,4 @@
-package com.example.deliveryassistant
+package com.example.deliveryassistant.view
 
 import com.journeyapps.barcodescanner.CaptureActivity
 

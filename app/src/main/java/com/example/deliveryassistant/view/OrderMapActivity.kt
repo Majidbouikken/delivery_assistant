@@ -95,8 +95,8 @@ class OrderMapActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         val orderLocation = LatLng(lat.toDouble(), lng.toDouble())
-        val myLat = 35.74107390905088
-        val myLng = 4.545641569204229
+        val myLat = 35.697071
+        val myLng = -0.630799
         val myLocation = LatLng(myLat, myLng)
         mMap.addMarker(MarkerOptions().position(orderLocation).title("Delivery location"))
         mMap.addMarker(MarkerOptions().position(myLocation).title(("My location")))

@@ -1,10 +1,9 @@
 package com.example.deliveryassistant.workers
 
-import android.annotation.SuppressLint
 import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerParameters
-import com.example.deliveryassistant.RetrofitService
+import com.example.deliveryassistant.retrofit.RetrofitService
 import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.utils.ConnectivityStatus
 import com.google.common.util.concurrent.ListenableFuture

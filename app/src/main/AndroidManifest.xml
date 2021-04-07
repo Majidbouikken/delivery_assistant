@@ -93,7 +93,7 @@
 
         <activity
             android:name=".view.OrderMapActivity"
-            android:label="@string/title_activity_order_map"></activity>
+            android:label="@string/title_activity_order_map" />
         <activity
             android:name=".view.LoginActivity"
             android:configChanges="orientation"
@@ -116,7 +116,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScanActivity" />
+        <activity android:name=".view.ScanActivity" />
     </application>
 
 </manifest>

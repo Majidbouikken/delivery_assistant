@@ -1,4 +1,4 @@
-package com.example.deliveryassistant
+package com.example.deliveryassistant.room
 
 import androidx.room.Dao
 import androidx.room.Insert

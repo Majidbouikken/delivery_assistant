@@ -1,4 +1,4 @@
-package com.example.deliveryassistant
+package com.example.deliveryassistant.retrofit
 
 import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.models.Product

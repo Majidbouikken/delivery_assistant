@@ -11,8 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.work.*
 import com.example.deliveryassistant.R
-import com.example.deliveryassistant.RetrofitService
-import com.example.deliveryassistant.ScanActivity
+import com.example.deliveryassistant.retrofit.RetrofitService
 import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.models.User
 import com.example.deliveryassistant.models.UserDashboard

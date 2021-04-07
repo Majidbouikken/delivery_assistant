@@ -9,11 +9,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.deliveryassistant.R
+import com.example.deliveryassistant.models.Order
 import com.example.deliveryassistant.models.Product
 import com.example.deliveryassistant.utils.MyNumberFormat
 
-class ProductAdapter(private val context: Context, var data: List<Product>) :
+class ProductAdapter(private val context: Context) :
     RecyclerView.Adapter<ProductViewHolder>() {
+
+    var data = ArrayList<Product>()
+
+    fun setListData(data: ArrayList<Product>) {
+        this.data = data
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         return ProductViewHolder(
             LayoutInflater.from(context).inflate(R.layout.layout_list_product, parent, false)

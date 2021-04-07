@@ -8,12 +8,11 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import com.example.deliveryassistant.R
-import com.example.deliveryassistant.RetrofitService
+import com.example.deliveryassistant.retrofit.RetrofitService
 import com.example.deliveryassistant.constant.NOM_FICHER_LOGIN
 import com.example.deliveryassistant.models.User
 import com.example.deliveryassistant.utils.SharedPreferencesInterface
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

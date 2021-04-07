@@ -3,7 +3,7 @@ package com.example.deliveryassistant.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.deliveryassistant.RetrofitService
+import com.example.deliveryassistant.retrofit.RetrofitService
 import com.example.deliveryassistant.models.Order
 import retrofit2.Call
 import retrofit2.Callback

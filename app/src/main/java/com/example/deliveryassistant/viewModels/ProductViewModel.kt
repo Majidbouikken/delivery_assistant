@@ -3,14 +3,13 @@ package com.example.deliveryassistant.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.deliveryassistant.RetrofitService
-import com.example.deliveryassistant.models.Order
+import com.example.deliveryassistant.retrofit.RetrofitService
 import com.example.deliveryassistant.models.Product
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProductsViewModels : ViewModel() {
+class ProductsViewModel : ViewModel() {
 
     var productsListData : MutableLiveData<List<Product>> = MutableLiveData()
 
